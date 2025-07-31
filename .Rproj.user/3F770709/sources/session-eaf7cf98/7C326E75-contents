@@ -1,0 +1,485 @@
+
+glimpse(base_modelo_censo_sf)
+library(sf)
+library(spdep)
+
+# Converter para objeto spatial antigo
+sf_spatial <- as(base_modelo_censo_sf, "Spatial")
+
+# Gerar vizinhança contígua (Queen)
+viz <- poly2nb(sf_spatial)
+
+# Criar lista de pesos espaciais
+w <- nb2listw(viz, style = "W", zero.policy = TRUE)
+library(spatialreg)
+
+modelo_sar <- lagsarlm(
+  prop_icsap ~ pib_pc + prop_preta + prop_esf + leitos_100 + taxa_alfab+
+    n_od_c_95+prop_esgot+prop_agua+prop_lixo,
+  data = sf_spatial,
+  listw = w,
+  zero.policy = TRUE
+)
+
+summary(modelo_sar)
+
+
+
+
+
+# dumnys regionais --------------------------------------------------------
+
+regioes <- tibble::tibble(
+  regiao = c("N", "NE", "CO", "SE", "S"),
+  cod_uf = list(
+    c(12, 16, 13, 11, 14, 15, 17),               # Norte
+    c(21, 22, 23, 24, 25, 26, 27, 28, 29),       # Nordeste
+    c(50, 51, 52),                               # Centro-Oeste
+    c(31, 32, 33, 35),                           # Sudeste
+    c(41, 42, 43)                                # Sul
+  )
+) %>%
+  tidyr::unnest(cod_uf)
+
+
+base_modelo_censo_sf <- base_modelo_censo_sf %>%
+  mutate(cod_uf = as.numeric(substr(code_muni, 1, 2))) %>%
+  left_join(regioes, by = "cod_uf")
+
+base_modelo_censo_sf <- base_modelo_censo_sf %>%
+  mutate(
+    dummy_norte = as.integer(regiao == "N"),
+    dummy_nordeste = as.integer(regiao == "NE"),
+    dummy_centrooeste = as.integer(regiao == "CO"),
+    dummy_sudeste = as.integer(regiao == "SE"),
+    dummy_sul = as.integer(regiao == "S")
+  )
+
+
+
+# 1. Remover a coluna duplicada
+base_modelo_censo_sf <- base_modelo_censo_sf %>%
+  select(-regiao.y)  # ou -regiao.x, se preferir a outra
+
+# 2. Renomear a que fica
+base_modelo_censo_sf <- base_modelo_censo_sf %>%
+  rename(regiao = regiao.x)
+
+# 3. Criar as dummies regionais
+base_modelo_censo_sf <- base_modelo_censo_sf %>%
+  mutate(
+    dummy_norte       = as.integer(regiao == "N"),
+    dummy_nordeste    = as.integer(regiao == "NE"),
+    dummy_centrooeste = as.integer(regiao == "CO"),
+    dummy_sudeste     = as.integer(regiao == "SE"),
+    dummy_sul         = as.integer(regiao == "S")
+  )
+
+
+modelo_regioes <- lagsarlm(
+  formula = prop_icsap ~ pib_pc + prop_preta + prop_esf + leitos_100 + taxa_alfab +
+    f_od_c_95 + prop_esgot + prop_agua + prop_lixo +
+    dummy_nordeste + dummy_centrooeste + dummy_norte + dummy_sul,
+  data = base_modelo_censo_sf,
+  listw = w,
+  zero.policy = TRUE
+)
+
+
+summary(modelo_regioes)
+
+
+modelo_regioes
+
+
+# testar diferentes matriz ------------------------------------------------
+
+# Criar diferentes matrizes de pesos
+w_b <- nb2listw(nb_filtrada, style = "B", zero.policy = TRUE)  # binária
+w_w <- nb2listw(nb_filtrada, style = "W", zero.policy = TRUE)  # padrão
+w_s <- nb2listw(nb_filtrada, style = "S", zero.policy = TRUE)  # soma 1
+
+# Fórmula do modelo
+form <- prop_icsap ~ pib_pc + prop_preta + prop_esf + leitos_100 +
+  taxa_alfab + f_od_c_95 + prop_esgot + prop_agua + prop_lixo +
+  dummy_norte + dummy_nordeste + dummy_centrooeste + dummy_sul
+
+# Ajustar modelos SAR
+modelo_b <- lagsarlm(form, data = base_modelo_censo_sf_filtrada, listw = w_b, zero.policy = TRUE)
+modelo_w <- lagsarlm(form, data = base_modelo_censo_sf_filtrada, listw = w_w, zero.policy = TRUE)
+modelo_s <- lagsarlm(form, data = base_modelo_censo_sf_filtrada, listw = w_s, zero.policy = TRUE)
+
+# Comparar AIC
+AIC(modelo_b, modelo_w, modelo_s)
+
+
+# Carregar pacotes
+library(spdep)
+library(dplyr)
+library(broom)
+
+# Criar data frame com os coeficientes dos modelos
+coef_comparacao <- bind_rows(
+  tidy(modelo_b) %>% mutate(modelo = "B"),
+  tidy(modelo_w) %>% mutate(modelo = "W"),
+  tidy(modelo_s) %>% mutate(modelo = "S")
+) %>%
+  select(modelo, term, estimate) %>%
+  tidyr::pivot_wider(names_from = modelo, values_from = estimate)
+
+# Exibir resultado
+print(coef_comparacao)
+
+
+# Com erros padrão e p-valores
+coef_completo <- bind_rows(
+  tidy(modelo_b) %>% mutate(modelo = "B"),
+  tidy(modelo_w) %>% mutate(modelo = "W"),
+  tidy(modelo_s) %>% mutate(modelo = "S")
+) %>%
+  select(modelo, term, estimate, std.error, p.value) %>%
+  tidyr::pivot_wider(
+    names_from = modelo,
+    values_from = c(estimate, std.error, p.value),
+    names_glue = "{modelo}_{.value}"
+  )
+
+
+# teste de matriz ---------------------------------------------------------
+
+library(spdep)
+
+# (A) Queen (contiguidade por vértice e borda)
+nb_queen <- poly2nb(base_modelo_censo_sf, queen = TRUE)
+lw_queen <- nb2listw(nb_queen, style = "W", zero.policy = TRUE)
+
+# (B) Rook (somente por borda)
+nb_rook <- poly2nb(base_modelo_censo_sf, queen = FALSE)
+lw_rook <- nb2listw(nb_rook, style = "W", zero.policy = TRUE)
+
+# (C) Distância fixa (por exemplo, 50km)
+coords <- sf::st_coordinates(sf::st_centroid(base_modelo_censo_sf))
+nb_dist <- dnearneigh(coords, 0, 50000)  # distância em metros
+lw_dist <- nb2listw(nb_dist, style = "W", zero.policy = TRUE)
+
+# (D) k-vizinhos mais próximos (por exemplo, k = 5)
+knn <- knearneigh(coords, k = 5)
+nb_knn <- knn2nb(knn)
+lw_knn <- nb2listw(nb_knn, style = "W", zero.policy = TRUE)
+
+base_modelo_censo_sf$pib_pc2 <- base_modelo_censo_sf$pib_pc^2
+
+# Defina a fórmula explicitamente como objeto
+form_modelo <- log(n_icsap) ~ pib_pc + prop_negros + prop_esf +
+  leitos_100 + taxa_alfab + n_od_c_95 + prop_esgot +
+  prop_agua + prop_lixo + dummy_norte + dummy_nordeste +
+  dummy_centrooeste + dummy_sul
+
+modelo_queen <- lagsarlm(form_modelo, data = base_modelo_censo_sf, listw = lw_queen, zero.policy = TRUE)
+
+summary(modelo_queen)
+
+modelo_rook  <- lagsarlm(form_modelo, data = base_modelo_censo_sf, listw = lw_rook, zero.policy = TRUE)
+modelo_knn   <- lagsarlm(form_modelo, data = base_modelo_censo_sf, listw = lw_knn, zero.policy = TRUE)
+
+
+AIC(modelo_queen, modelo_rook, modelo_knn)
+
+summary(modelo_queen)
+
+##tabela comparativa
+library(dplyr)
+library(broom)
+
+# Lista de modelos e nomes
+lista_modelos <- list(
+  Queen = modelo_queen,
+  Rook = modelo_rook,
+  KNN = modelo_knn
+)
+
+# Função para extrair tidy() e formatar
+extrair_coef <- function(modelo, nome) {
+  tidy(modelo) %>%
+    mutate(modelo = nome) %>%
+    select(modelo, term, estimate, std.error, p.value)
+}
+
+# Aplicar para todos
+tabela_modelos <- purrr::map2_dfr(lista_modelos,
+                                  names(lista_modelos), extrair_coef)
+
+
+
+base_modelo_censo_sf$interacao_pib_negros <- base_modelo_censo_sf$pib_pc * base_modelo_censo_sf$prop_negros
+form_modelo_ext <- n_icsap ~ pib_pc + log(total)+ prop_negros+
+  prop_esf + leitos_100 + taxa_alfab + n_od_c_95 +
+  prop_esgot + prop_agua +
+  dummy_norte + dummy_nordeste + dummy_centrooeste + dummy_sul
+
+
+modelo_ext <- lagsarlm(
+  formula = form_modelo_ext,
+  data = base_modelo_censo_sf,
+  listw = lw_queen,
+  zero.policy = TRUE
+)
+summary(modelo_ext)
+
+# mapas -------------------------------------------------------------------
+
+library(ggplot2)
+library(sf)
+library(MetBrewer)
+library(ggthemes)
+
+base_modelo_censo <- base_modelo_censo_sf |>
+  mutate(prop_negros = preta + parda/total)
+
+library(ggspatial)
+
+lim_uf <- geobr::read_state()
+
+lim_br <- geobr::read_country()
+
+lim_mun <- geobr::read_municipality()
+
+ggplot(base_modelo_censo_sf) +
+  geom_sf(aes(fill = prop_negros), color = NA) +
+  geom_sf(data = lim_uf, fill = NA, color = "black", size = 0.3) +
+  geom_sf(data= lim_br, fill=NA, color='black', size=0.3)+
+  scale_fill_gradientn(
+    colours = rev(MetBrewer::met.brewer("Troy")),
+    name = "\nPoluação \nNegra (%)"
+  ) +
+  annotation_scale(location = "bl", width_hint = 0.25) +
+  annotation_north_arrow(
+    location = "br",
+    which_north = "true",
+    pad_x = unit(0.4, "cm"),
+    pad_y = unit(0.4, "cm"),
+    style = north_arrow_fancy_orienteering(
+      text_col = "black",
+      text_face = "plain",
+      text_size = 10
+    )
+  ) +
+  theme_minimal()+ theme(
+    axis.title = element_blank(),
+    axis.text = element_blank()
+  )+ coord_sf(crs = 4674) +
+  theme(panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+    legend.position = c(0.85, 0.3),  # posição relativa (x, y)
+    legend.justification = c("left", "bottom"),
+    legend.box.margin = margin(0, 0, 0, 0),
+    legend.background = element_rect(fill = NA, color = NA)
+  )
+
+
+ggsave(
+  filename = "graficos/mapa_proporcao_negros.pdf",
+  plot = last_plot(),      # ou substitua por nome do objeto do ggplot
+  width = 10,
+  height = 8,
+  dpi = 300,
+  bg='white'
+)
+
+
+
+### siglas
+
+base_modelo_censo_sf <- base_modelo_censo_sf %>% mutate(perct_pop_negra=prop_negra*100)
+
+glimpse(lim_uf)
+library(dplyr)
+library(sf)
+
+ufs_siglas <- lim_uf %>%
+  st_point_on_surface() %>%
+  cbind(st_coordinates(.))
+
+library(ggshadow)  # para geom_shadowtext()
+
+ggplot(base_modelo_censo_sf) +
+  geom_sf(aes(fill = perct_pop_negra), color = NA) +
+  geom_sf(data = lim_uf, fill = NA, color = "black", size = 0.3) +
+  geom_sf(data= lim_br, fill=NA, color='black', size=0.3) +
+  geom_shadowtext(
+    data = ufs_siglas,
+    aes(x = X, y = Y, label = abbrev_state),
+    color = "black", bg.color = "white",
+    size = 2, fontface = "bold"
+  ) +
+  scale_fill_gradientn(
+    colours = rev(MetBrewer::met.brewer("Troy")),
+    name = "\nPopulação \nNegra (%)",
+    labels = scales::label_percent(scale = 1)
+  ) +
+  annotation_scale(location = "bl", width_hint = 0.25) +
+  annotation_north_arrow(
+    location = "br",
+    which_north = "true",
+    pad_x = unit(0.4, "cm"),
+    pad_y = unit(0.4, "cm"),
+    style = north_arrow_fancy_orienteering(
+      text_col = "black", text_face = "plain", text_size = 10
+    )
+  ) +
+  ggthemes::theme_map()+
+  theme(
+    axis.title = element_blank(),
+    axis.text = element_blank(),
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    legend.position = c(0.90, 0.3),
+    legend.justification = c("right", "bottom"),
+    legend.box.margin = margin(0, 0, 0, 0),
+    legend.background = element_rect(fill = NA, color = NA)
+  ) +
+  coord_sf(crs = 4674)
+
+
+
+### Sudeste
+ggplot(base_modelo_censo_sf) +
+  geom_sf(aes(fill = perct_pop_negra), color = NA) +
+  geom_sf(data = lim_uf, fill = NA, color = "black", size = 0.3) +
+  geom_sf(data = lim_br, fill = NA, color = "black", size = 0.3) +
+  geom_shadowtext(
+    data = ufs_siglas,
+    aes(x = X, y = Y, label = abbrev_state),
+    color = "black", bg.color = "white",
+    size = 3, fontface = "bold"
+  ) +
+  scale_fill_gradientn(
+    colours = rev(MetBrewer::met.brewer("Troy")),
+    name = "\nPopulação \nNegra",
+    labels = scales::label_percent(scale = 1)
+  ) +
+  annotation_scale(location = "bl", width_hint = 0.25) +
+  annotation_north_arrow(
+    location = "br",
+    which_north = "true",
+    pad_x = unit(0.4, "cm"),
+    pad_y = unit(0.4, "cm"),
+    style = north_arrow_fancy_orienteering(
+      text_col = "black", text_face = "plain", text_size = 10
+    )
+  ) +
+  ggthemes::theme_map()+
+  theme(
+    axis.title = element_blank(),
+    axis.text = element_blank(),
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    legend.position = c(0.95, 0.2),
+    legend.justification = c("left", "bottom"),
+    legend.box.margin = margin(0, 0, 0, 0),
+    legend.background = element_rect(fill = NA, color = NA)
+  ) +
+  coord_sf(crs = 4674, xlim = c(-52.5, -39.5), ylim = c(-25, -15))
+
+
+
+
+ggsave(
+  filename = "graficos/mapa_sudeste_negros.png",
+  plot = last_plot(),      # ou substitua por nome do objeto do ggplot
+  width = 10,
+  height = 8,
+  dpi = 300,
+  bg='white'
+)
+
+
+
+
+# populacao preta ---------------------------------------------------------
+
+
+base_modelo_censo_sf <- base_modelo_censo_sf %>%
+  mutate(perct_pop_preta=prop_preta*100)
+
+
+glimpse(lim_uf)
+library(dplyr)
+library(sf)
+
+ufs_siglas <- lim_uf %>%
+  st_point_on_surface() %>%
+  cbind(st_coordinates(.))
+
+library(ggshadow)  # para geom_shadowtext()
+
+library(BAMMtools)
+
+# Calcular quebras naturais (Jenks) com k = 6 (você pode ajustar para 5–7 por estética)
+jenks <- getJenksBreaks(base_modelo_censo_sf$perct_pop_preta, k = 6)
+
+
+
+# Rotular os grupos
+library(BAMMtools)
+library(dplyr)
+
+# Calcular quebras de Jenks com k = 7 para sua variável de interesse
+jenks_breaks <- getJenksBreaks(base_modelo_censo_sf$perct_pop_preta,
+                               k = 7)
+
+# Criar uma variável com os grupos baseados nos intervalos
+base_modelo_censo_sf <- base_modelo_censo_sf |>
+  mutate(grupo_jenks = cut(
+    perct_pop_preta,
+    breaks = jenks_breaks,
+    include.lowest = TRUE
+  ))
+
+cores_jenks <- MetBrewer::met.brewer("Peru1", n = 6)
+
+ggplot(base_modelo_censo_sf) +
+  geom_sf(aes(fill = grupo_jenks), color = NA) +
+  geom_sf(data = lim_uf, fill = NA, color = "black", size = 0.3) +
+  geom_sf(data = lim_br, fill = NA, color = "black", size = 0.3) +
+  geom_shadowtext(
+    data = ufs_siglas,
+    aes(x = X, y = Y, label = abbrev_state),
+    color = "black", bg.color = "white", size = 2, fontface = "bold"
+  ) +
+  scale_fill_manual(
+    values = cores_jenks,
+    labels = c("0,3 ~ 4,9%", "4,9~8,9%", "8,9~13,8%",
+               "13,8~20,7%", "20,7~32,1%", "32,1~58,5%"),
+    name = "\nPopulação\nPreta (%)"
+  ) +
+  annotation_scale(location = "bl", width_hint = 0.25) +
+  annotation_north_arrow(
+    location = "br", which_north = "true",
+    pad_x = unit(0.4, "cm"), pad_y = unit(0.4, "cm"),
+    style = north_arrow_fancy_orienteering(
+      text_col = "black", text_face = "plain", text_size = 10
+    )
+  ) +
+  ggthemes::theme_map() +
+  theme(
+    legend.position = "top",
+    legend.direction = "horizontal",
+    legend.title = element_text(size = 9, face = "bold"),
+    legend.text = element_text(size = 8),
+    legend.justification = "center",
+    legend.background = element_rect(fill = "white", color = NA),
+    legend.box.margin = margin(5, 0, 5, 0)
+  ) +
+  coord_sf(crs = 4674)
+
+
+ggsave(
+  filename = "graficos/mapa_pretos.png",
+  plot = last_plot(),      # ou substitua por nome do objeto do ggplot
+  width = 10,
+  height = 8,
+  dpi = 300,
+  bg='white'
+)
+

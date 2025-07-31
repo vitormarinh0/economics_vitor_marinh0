@@ -1,0 +1,30 @@
+---
+title: "Mundo Marinho"
+page-layout: full
+title-block-banner: true
+title-block-banner-color: "#0d0d0d"
+title-block-banner-image: img/banner-amazonia.jpg
+listing:
+  contents: posts
+  sort: "date desc"
+  type: default
+  categories: true
+  sort-ui: false
+  filter-ui: false
+---
+
+# Bem-vindo ao Blog
+
+Sou **Vitor Marinho**, economista e pesquisador na interseção entre desenvolvimento regional, bioeconomia e sustentabilidade. Neste espaço, compartilho meus projetos, visualizações e reflexões.
+
+<div style="margin-top: 1em; font-size: 1.1em;">
+  <a href="https://github.com/vitormarinh0" target="_blank">
+    <i class="bi bi-github"></i> GitHub
+  </a> |
+  <a href="https://www.linkedin.com/in/vitor-marinho-a4b742242" target="_blank">
+    <i class="bi bi-linkedin"></i> LinkedIn
+  </a>
+</div>
+---
+
+## Últimas publicações

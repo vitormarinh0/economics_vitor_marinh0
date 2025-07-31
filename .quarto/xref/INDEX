@@ -1,0 +1,26 @@
+{
+  "index.qmd": {
+    "index.html": "b7f2c604"
+  },
+  "posts/post-with-code/index.qmd": {
+    "index.html": "24fb2b57"
+  },
+  "posts/welcome/index.qmd": {
+    "index.html": "fa6a39d7"
+  },
+  "about.qmd": {
+    "about.html": "ce3cfa44"
+  },
+  "posts/bioeconomia.qmd": {
+    "bioeconomia.html": "e75d73a1"
+  },
+  "projects/projects.qmd": {
+    "projects.html": "a2cdb556"
+  },
+  "posts/index.qmd": {
+    "index.html": "262df56c"
+  },
+  "posts/populacao_negra.qmd": {
+    "populacao_negra.html": "f3bc0b52"
+  }
+}

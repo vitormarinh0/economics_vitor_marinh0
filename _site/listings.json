@@ -1,0 +1,17 @@
+[
+  {
+    "listing": "/posts/index.html",
+    "items": [
+      "/posts/populacao_negra.html",
+      "/posts/bioeconomia.html"
+    ]
+  },
+  {
+    "listing": "/index.html",
+    "items": [
+      "/posts/index.html",
+      "/posts/populacao_negra.html",
+      "/posts/bioeconomia.html"
+    ]
+  }
+]

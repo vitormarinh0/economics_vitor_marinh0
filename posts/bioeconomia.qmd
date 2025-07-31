@@ -1,0 +1,12 @@
+---
+title: "Modelagem para Bioeconomia na Amazônia"
+date: 2024-01-15
+categories: [bioeconomia, amazônia, sustentabilidade]
+author: "Vitor Marinho"
+page-layout: full
+title-block-banner: true
+---
+
+A bioeconomia oferece caminhos promissores para o desenvolvimento sustentável da Amazônia, combinando conservação ambiental e geração de renda local.
+
+![](images/uso_terra.png)
