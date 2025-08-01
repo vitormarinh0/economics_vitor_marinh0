@@ -16,3 +16,5 @@ listing:
 Bem-vindo ao meu blog! Aqui compartilho análises, visualizações e reflexões sobre temas como sustentabilidade, desigualdade racial, bioeconomia e políticas públicas.
 
 ------------------------------------------------------------------------
+
+![](/img/foto_blog.jpeg)
