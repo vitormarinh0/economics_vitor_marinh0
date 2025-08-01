@@ -7,11 +7,11 @@ page-layout: full
 title-block-banner: true
 ---
 
-Este post se baseia no estudo “Impactos da Bioeconomia na Amazônia em Cenários de Mudanças Ambientais”, desenvolvido no âmbito da Cátedra Escolhas de Economia e Meio Ambiente. O artigo completo está disponível em: [escolhas.org/wp-content/uploads/2024/12/Artigo_Bioeconomia.pdf](Artigo Bioeconomia)
+Este post se baseia no estudo “Impactos da Bioeconomia na Amazônia em Cenários de Mudanças Ambientais”, desenvolvido no âmbito da Cátedra Escolhas de Economia e Meio Ambiente. O artigo completo está disponível em: [escolhas.org/wp-content/uploads/2024/12/Artigo_Bioeconomia.pdf](Artigo%20Bioeconomia)
 
 Os cenários simulados destacam como a combinação entre políticas de desmatamento zero, implementadas a partir de 2030 e o estímulo à bioeconomia tem potencial para reconfigurar profundamente o uso da terra na Amazônia. No cenário sem política, o avanço da fronteira agrícola ocorre principalmente por meio da expansão de pastagens e cultivos, o que leva ao uso de aproximadamente 14 milhões de hectares até 2040, mesmo com a limitação do desmatamento após 2030.
 
-![](images/uso_terra.png)
+![](/posts/images/uso_terra.png)
 
 Já no cenário com política de bioeconomia, observa-se uma forte contenção na conversão de áreas naturais, com redução significativa das áreas de pastagem (de 6,86 para 1,17 milhões de hectares) e uma estabilidade no uso agrícola, ao mesmo tempo em que aumenta a relevância de sistemas produtivos florestais sustentáveis. O efeito líquido dessa política é a preservação estimada de 9,83 milhões de hectares até 2040, destacando a bioeconomia como instrumento eficaz de compatibilização entre crescimento econômico regional e conservação ambiental, alinhado aos compromissos internacionais assumidos pelo Brasil.
 
@@ -22,7 +22,6 @@ Já no cenário com política de bioeconomia, observa-se uma forte contenção n
 <details>
 
 <summary><strong>🔍 Clique para expandir o código</strong></summary>
-
 
 ``` python
 import matplotlib.pyplot as plt
