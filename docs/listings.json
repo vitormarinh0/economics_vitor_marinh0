@@ -1,0 +1,19 @@
+[
+  {
+    "listing": "/index.html",
+    "items": [
+      "/posts/index.html",
+      "/posts/ipea_lid_grupos.html",
+      "/posts/populacao_negra.html",
+      "/posts/bioeconomia.html"
+    ]
+  },
+  {
+    "listing": "/posts/index.html",
+    "items": [
+      "/posts/ipea_lid_grupos.html",
+      "/posts/populacao_negra.html",
+      "/posts/bioeconomia.html"
+    ]
+  }
+]

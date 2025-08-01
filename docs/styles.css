@@ -1,0 +1,47 @@
+/* css styles */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+/* Banner da página inicial */
+.quarto-title-banner {
+  background-image: url('img/banner_amz.jpg');
+  background-size: cover;
+  background-position: center;
+  color: white;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.7);
+  padding: 2em;
+}
+
+/* Fonte geral */
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f8f9fa; /* cinza claro */
+  color: 		#0d0d0d;
+}
+
+/* Títulos */
+h1, h2, h3 {
+  color: #013328; /* verde escuro */
+}
+
+/* Links */
+a {
+  color: #9b1c1c; /* azul Google */
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+
+/* Justificar todos os parágrafos */
+p {
+  text-align: justify;
+}
+
+/* Remover texto sobre o banner */
+.quarto-title-banner .title,
+.quarto-title-banner .subtitle,
+.quarto-title-banner .description {
+  display: none;
+}
