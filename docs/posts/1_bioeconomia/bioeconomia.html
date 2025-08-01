@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Vitor Marinho">
+<meta name="dcterms.date" content="2024-01-15">
 
-<title>Blog – Mundo Marinho</title>
+<title>Modelagem para Bioeconomia na Amazônia – Mundo Marinho</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,28 +22,61 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-listing/list.min.js"></script>
-<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-c1fac2584b48ed01fb6e278e36375074.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-c1fac2584b48ed01fb6e278e36375074.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -69,68 +104,10 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-title','listing-date','listing-categories','listing-description','listing-image',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -140,7 +117,7 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Mundo Marinho</span>
     </a>
   </div>
@@ -151,15 +128,15 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Início</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../about.html"> 
+    <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">Sobre</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../posts/"> 
+    <a class="nav-link" href="../../posts/"> 
 <span class="menu-text">Blog</span></a>
   </li>  
 </ul>
@@ -173,14 +150,31 @@ window.Quarto = {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-page-left">
-      <h1 class="title">Blog</h1>
-                      </div>
+      <h1 class="title">Modelagem para Bioeconomia na Amazônia</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">bioeconomia</div>
+                <div class="quarto-category">amazônia</div>
+                <div class="quarto-category">sustentabilidade</div>
+              </div>
+                  </div>
   </div>
     
   
   <div class="quarto-title-meta column-page-left">
 
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Vitor Marinho </p>
+            </div>
+    </div>
       
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">January 15, 2024</p>
+      </div>
+    </div>
     
       
     </div>
@@ -190,8 +184,14 @@ window.Quarto = {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(5)</span></div><div class="category" data-category="YW1heiVDMyVCNG5pYQ==">amazônia <span class="quarto-category-count">(1)</span></div><div class="category" data-category="YmlvZWNvbm9taWE=">bioeconomia <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y2klQzMlQUFuY2lh">ciência <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZGF0YS12aXN1YWxpemF0aW9u">data-visualization <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZGF0YXZpeg==">dataviz <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZGVtb2dyYWZpYQ==">demografia <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZGVzaWd1YWxkYWRlcw==">desigualdades <span class="quarto-category-count">(1)</span></div><div class="category" data-category="aW5vdmElQzMlQTclQzMlQTNv">inovação <span class="quarto-category-count">(1)</span></div><div class="category" data-category="SXBlYQ==">Ipea <span class="quarto-category-count">(2)</span></div><div class="category" data-category="bWFwYXM=">mapas <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cGVzcXVpc2E=">pesquisa <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cGxhdGFmb3JtYXM=">plataformas <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cG9sJUMzJUFEdGljYXMlMjBwJUMzJUJBYmxpY2Fz">políticas públicas <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Ug==">R <span class="quarto-category-count">(1)</span></div><div class="category" data-category="c3VzdGVudGFiaWxpZGFkZQ==">sustentabilidade <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dHJhbnNpJUMzJUE3JUMzJUEzbyUyMHZlcmRl">transição verde <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dHJhbnNwb3J0ZQ==">transporte <span class="quarto-category-count">(1)</span></div></div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#código-para-reprodução-do-gráfico" id="toc-código-para-reprodução-do-gráfico" class="nav-link active" data-scroll-target="#código-para-reprodução-do-gráfico">📜 Código para reprodução do gráfico</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
 
@@ -199,167 +199,76 @@ window.Quarto = {
 
 
 
-<p>Bem-vindo ao meu blog! Aqui compartilho análises, visualizações e reflexões sobre temas como sustentabilidade, desigualdade racial, bioeconomia e políticas públicas.</p>
+<p>Este post se baseia no estudo “Impactos da Bioeconomia na Amazônia em Cenários de Mudanças Ambientais”, desenvolvido no âmbito da Cátedra Escolhas de Economia e Meio Ambiente. O artigo completo está disponível em: <a href="Artigo Bioeconomia">escolhas.org/wp-content/uploads/2024/12/Artigo_Bioeconomia.pdf</a></p>
+<p>Os cenários simulados destacam como a combinação entre políticas de desmatamento zero, implementadas a partir de 2030 e o estímulo à bioeconomia tem potencial para reconfigurar profundamente o uso da terra na Amazônia. No cenário sem política, o avanço da fronteira agrícola ocorre principalmente por meio da expansão de pastagens e cultivos, o que leva ao uso de aproximadamente 14 milhões de hectares até 2040, mesmo com a limitação do desmatamento após 2030.</p>
+<p><img src="images/uso_terra.png" class="img-fluid"></p>
+<p>Já no cenário com política de bioeconomia, observa-se uma forte contenção na conversão de áreas naturais, com redução significativa das áreas de pastagem (de 6,86 para 1,17 milhões de hectares) e uma estabilidade no uso agrícola, ao mesmo tempo em que aumenta a relevância de sistemas produtivos florestais sustentáveis. O efeito líquido dessa política é a preservação estimada de 9,83 milhões de hectares até 2040, destacando a bioeconomia como instrumento eficaz de compatibilização entre crescimento econômico regional e conservação ambiental, alinhado aos compromissos internacionais assumidos pelo Brasil.</p>
 <hr>
+<section id="código-para-reprodução-do-gráfico" class="level2">
+<h2 class="anchored" data-anchor-id="código-para-reprodução-do-gráfico">📜 Código para reprodução do gráfico</h2>
+<details>
+<summary>
+<strong>🔍 Clique para expandir o código</strong>
+</summary>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Dados para o cenário Sem Política</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>data_b <span class="op">=</span> {</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Year"</span>: [<span class="dv">2025</span>, <span class="dv">2030</span>, <span class="dv">2035</span>, <span class="dv">2040</span>],</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Cultivo"</span>: [<span class="fl">0.73</span>, <span class="fl">2.16</span>, <span class="fl">3.88</span>, <span class="fl">5.83</span>],</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Pastagem"</span>: [<span class="fl">1.33</span>, <span class="fl">2.83</span>, <span class="fl">4.69</span>, <span class="fl">6.86</span>],</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Floresta Plantada"</span>: [<span class="fl">0.28</span>, <span class="fl">0.72</span>, <span class="fl">1.27</span>, <span class="fl">1.91</span>]</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Dados para o cenário Com Política de Bioeconomia</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>data_p <span class="op">=</span> {</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Year"</span>: [<span class="dv">2025</span>, <span class="dv">2030</span>, <span class="dv">2035</span>, <span class="dv">2040</span>],</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Cultivo"</span>: [<span class="fl">0.60</span>, <span class="fl">1.50</span>, <span class="fl">2.23</span>, <span class="fl">2.87</span>],</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Pastagem"</span>: [<span class="fl">1.23</span>, <span class="fl">1.73</span>, <span class="fl">1.59</span>, <span class="fl">1.17</span>],</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Floresta"</span>: [<span class="fl">0.29</span>, <span class="fl">0.47</span>, <span class="fl">0.46</span>, <span class="fl">0.45</span>]</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>df_area_chart_b <span class="op">=</span> pd.DataFrame(data_b).set_index(<span class="st">'Year'</span>)</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>df_area_chart_p <span class="op">=</span> pd.DataFrame(data_p).set_index(<span class="st">'Year'</span>)</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>cores_personalizadas <span class="op">=</span> [<span class="st">"#D72000"</span>, <span class="st">"#f7ce46"</span>, <span class="st">"#1BB6AF"</span>]</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> annotate_values(ax, df):</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> year <span class="kw">in</span> [<span class="dv">2025</span>, <span class="dv">2040</span>]:</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>        year_values <span class="op">=</span> df.loc[year]</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>        cumulative_height <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> col <span class="kw">in</span> df.columns:</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>            val <span class="op">=</span> year_values[col]</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>            cumulative_height <span class="op">+=</span> val</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>            y_pos <span class="op">=</span> cumulative_height <span class="op">-</span> val <span class="op">/</span> <span class="dv">2</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>            ax.text(year, y_pos, <span class="ss">f'</span><span class="sc">{</span>val<span class="sc">:.2f}</span><span class="ss">'</span>, ha<span class="op">=</span><span class="st">'center'</span>, va<span class="op">=</span><span class="st">'center'</span>, fontsize<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">15</span>, <span class="dv">6</span>))</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>df_area_chart_b.plot.area(ax<span class="op">=</span>axes[<span class="dv">0</span>], stacked<span class="op">=</span><span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.8</span>, color<span class="op">=</span>cores_personalizadas)</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>annotate_values(axes[<span class="dv">0</span>], df_area_chart_b)</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].set_title(<span class="st">'Uso da Terra - Sem Política (A)'</span>)</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].set_ylabel(<span class="st">'Milhões de hectares'</span>)</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].set_xlabel(<span class="st">'Ano'</span>)</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].grid(<span class="va">True</span>, linestyle<span class="op">=</span><span class="st">"--"</span>)</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>df_area_chart_p.plot.area(ax<span class="op">=</span>axes[<span class="dv">1</span>], stacked<span class="op">=</span><span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.8</span>, color<span class="op">=</span>cores_personalizadas)</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>annotate_values(axes[<span class="dv">1</span>], df_area_chart_p)</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].set_title(<span class="st">'Uso da Terra - Com Política de Bioeconomia (B)'</span>)</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].set_ylabel(<span class="st">'Milhões de hectares'</span>)</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].set_xlabel(<span class="st">'Ano'</span>)</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].grid(<span class="va">True</span>, linestyle<span class="op">=</span><span class="st">"--"</span>)</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">'uso_terra.png'</span>, dpi<span class="op">=</span><span class="dv">300</span>, transparent<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">'uso_terra.svg'</span>, <span class="bu">format</span><span class="op">=</span><span class="st">'svg'</span>, dpi<span class="op">=</span><span class="dv">300</span>)</span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;/</span>details<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
+</details></section>
 
-
-<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
-<div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-categories="ZGF0YS12aXN1YWxpemF0aW9uJTJDdHJhbnNwb3J0ZSUyQ3BsYXRhZm9ybWFz" data-listing-date-sort="1754017200000" data-listing-file-modified-sort="1754087805793" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="458">
-<a href="../posts/5_plataformas_transportes/mapa_plataformas.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="../posts/5_plataformas_transportes/img/mapa_uber_99_brasil.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Onde operam as plataformas de transporte no Brasil?
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('ZGF0YS12aXN1YWxpemF0aW9u'); return false;">data-visualization</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('dHJhbnNwb3J0ZQ=='); return false;">transporte</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('cGxhdGFmb3JtYXM='); return false;">plataformas</div>
-
-</div>
-<div class="card-text listing-description delink">
-As plataformas de transporte por aplicativo transformaram a mobilidade urbana nas últimas décadas. No Brasil, empresas como a <strong>Uber</strong> e a <strong>99</strong> se espalharam por centenas de…
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-Aug 1, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="1" data-categories="Y2klQzMlQUFuY2lhJTJDZGVzaWd1YWxkYWRlcyUyQ3Blc3F1aXNhJTJDSXBlYQ==" data-listing-date-sort="1754017200000" data-listing-file-modified-sort="1754014417470" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="375">
-<a href="../posts/3_lideracan_cientifica/ipea_lid_grupos.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="../img/p_cluster_2023.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Mais lideranças negras na ciência brasileira
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('Y2klQzMlQUFuY2lh'); return false;">ciência</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('ZGVzaWd1YWxkYWRlcw=='); return false;">desigualdades</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('cGVzcXVpc2E='); return false;">pesquisa</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('SXBlYQ=='); return false;">Ipea</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>Análise do aumento da presença de pretos e pardos na liderança de grupos de pesquisa no Brasil com base no Diretório de Grupos de Pesquisa (CNPq).</p>
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-Aug 1, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="2" data-categories="ZGVtb2dyYWZpYSUyQ21hcGFzJTJDZGF0YXZpeiUyQ1I=" data-listing-date-sort="1753930800000" data-listing-file-modified-sort="1754014159259" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="433">
-<a href="../posts/4_pop_negra_municipios/populacao_negra.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="../img/mapa_proporcao_negros.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Distribuição Espacial da População Negra no Brasil
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('ZGVtb2dyYWZpYQ=='); return false;">demografia</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('bWFwYXM='); return false;">mapas</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('ZGF0YXZpeg=='); return false;">dataviz</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Ug=='); return false;">R</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>Mapeamento da proporção da população negra por região intermediária com base no Censo 2022.</p>
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-Jul 31, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="3" data-categories="dHJhbnNpJUMzJUE3JUMzJUEzbyUyMHZlcmRlJTJDaW5vdmElQzMlQTclQzMlQTNvJTJDcG9sJUMzJUFEdGljYXMlMjBwJUMzJUJBYmxpY2FzJTJDSXBlYQ==" data-listing-date-sort="1739588400000" data-listing-file-modified-sort="1754083133565" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="348">
-<a href="../posts/2_twin_transition/twin_transition.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="../img/metodologia_nt.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Transição Verde e Digital: o papel das organizações internacionais
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('dHJhbnNpJUMzJUE3JUMzJUEzbyUyMHZlcmRl'); return false;">transição verde</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('aW5vdmElQzMlQTclQzMlQTNv'); return false;">inovação</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('cG9sJUMzJUFEdGljYXMlMjBwJUMzJUJBYmxpY2Fz'); return false;">políticas públicas</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('SXBlYQ=='); return false;">Ipea</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>Interpretações do conceito de “transição gêmea” por parte de organizações internacionais e suas implicações para o desenvolvimento sustentável e tecnológico.</p>
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-Feb 15, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="4" data-categories="YmlvZWNvbm9taWElMkNhbWF6JUMzJUI0bmlhJTJDc3VzdGVudGFiaWxpZGFkZQ==" data-listing-date-sort="1705287600000" data-listing-file-modified-sort="1754084303291" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="438">
-<a href="../posts/1_bioeconomia/bioeconomia.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="1_bioeconomia/images/uso_terra.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Modelagem para Bioeconomia na Amazônia
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('YmlvZWNvbm9taWE='); return false;">bioeconomia</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('YW1heiVDMyVCNG5pYQ=='); return false;">amazônia</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('c3VzdGVudGFiaWxpZGFkZQ=='); return false;">sustentabilidade</div>
-
-</div>
-<div class="card-text listing-description delink">
-Este post se baseia no estudo “Impactos da Bioeconomia na Amazônia em Cenários de Mudanças Ambientais”, desenvolvido no âmbito da Cátedra Escolhas de Economia e Meio…
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-Jan 15, 2024
-</div>
-</div>
-</div>
-</div></a>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

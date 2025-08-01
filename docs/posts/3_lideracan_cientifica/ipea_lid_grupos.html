@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2025-08-01">
+<meta name="description" content="Análise do aumento da presença de pretos e pardos na liderança de grupos de pesquisa no Brasil com base no Diretório de Grupos de Pesquisa (CNPq).">
 
-<title>Blog – Mundo Marinho</title>
+<title>Mais lideranças negras na ciência brasileira – Mundo Marinho</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,25 +25,23 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-listing/list.min.js"></script>
-<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-c1fac2584b48ed01fb6e278e36375074.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-c1fac2584b48ed01fb6e278e36375074.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -69,68 +69,10 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-title','listing-date','listing-categories','listing-description','listing-image',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -140,7 +82,7 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Mundo Marinho</span>
     </a>
   </div>
@@ -151,15 +93,15 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Início</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../about.html"> 
+    <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">Sobre</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../posts/"> 
+    <a class="nav-link" href="../../posts/"> 
 <span class="menu-text">Blog</span></a>
   </li>  
 </ul>
@@ -172,194 +114,124 @@ window.Quarto = {
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page-left">
-      <h1 class="title">Blog</h1>
-                      </div>
+    <div class="quarto-title column-body">
+      <h1 class="title">Mais lideranças negras na ciência brasileira</h1>
+                  <div>
+        <div class="description">
+          Análise do aumento da presença de pretos e pardos na liderança de grupos de pesquisa no Brasil com base no Diretório de Grupos de Pesquisa (CNPq).
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">ciência</div>
+                <div class="quarto-category">desigualdades</div>
+                <div class="quarto-category">pesquisa</div>
+                <div class="quarto-category">Ipea</div>
+              </div>
+                  </div>
   </div>
     
   
-  <div class="quarto-title-meta column-page-left">
+  <div class="quarto-title-meta">
 
       
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">August 1, 2025</p>
+      </div>
+    </div>
     
       
     </div>
     
   
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(5)</span></div><div class="category" data-category="YW1heiVDMyVCNG5pYQ==">amazônia <span class="quarto-category-count">(1)</span></div><div class="category" data-category="YmlvZWNvbm9taWE=">bioeconomia <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y2klQzMlQUFuY2lh">ciência <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZGF0YS12aXN1YWxpemF0aW9u">data-visualization <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZGF0YXZpeg==">dataviz <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZGVtb2dyYWZpYQ==">demografia <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZGVzaWd1YWxkYWRlcw==">desigualdades <span class="quarto-category-count">(1)</span></div><div class="category" data-category="aW5vdmElQzMlQTclQzMlQTNv">inovação <span class="quarto-category-count">(1)</span></div><div class="category" data-category="SXBlYQ==">Ipea <span class="quarto-category-count">(2)</span></div><div class="category" data-category="bWFwYXM=">mapas <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cGVzcXVpc2E=">pesquisa <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cGxhdGFmb3JtYXM=">plataformas <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cG9sJUMzJUFEdGljYXMlMjBwJUMzJUJBYmxpY2Fz">políticas públicas <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Ug==">R <span class="quarto-category-count">(1)</span></div><div class="category" data-category="c3VzdGVudGFiaWxpZGFkZQ==">sustentabilidade <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dHJhbnNpJUMzJUE3JUMzJUEzbyUyMHZlcmRl">transição verde <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dHJhbnNwb3J0ZQ==">transporte <span class="quarto-category-count">(1)</span></div></div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#cresce-a-proporção-de-negros-na-liderança-científica" id="toc-cresce-a-proporção-de-negros-na-liderança-científica" class="nav-link active" data-scroll-target="#cresce-a-proporção-de-negros-na-liderança-científica">Cresce a proporção de negros na liderança científica</a>
+  <ul class="collapse">
+  <li><a href="#introdução" id="toc-introdução" class="nav-link" data-scroll-target="#introdução">Introdução</a></li>
+  <li><a href="#destaques-do-estudo" id="toc-destaques-do-estudo" class="nav-link" data-scroll-target="#destaques-do-estudo">Destaques do estudo</a></li>
+  <li><a href="#referências" id="toc-referências" class="nav-link" data-scroll-target="#referências">Referências</a></li>
+  <li><a href="#resumo-executivo" id="toc-resumo-executivo" class="nav-link" data-scroll-target="#resumo-executivo">Resumo Executivo</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
 
 
-<p>Bem-vindo ao meu blog! Aqui compartilho análises, visualizações e reflexões sobre temas como sustentabilidade, desigualdade racial, bioeconomia e políticas públicas.</p>
+<section id="cresce-a-proporção-de-negros-na-liderança-científica" class="level1">
+<h1>Cresce a proporção de negros na liderança científica</h1>
+<p>Nos últimos anos, diversos estudos têm evidenciado um crescimento importante, embora ainda desigual, da presença de pessoas negras em posições de liderança na ciência brasileira. A seguir, compartilho um conteúdo originalmente publicado na <em>Revista Pesquisa FAPESP</em> sobre esse avanço, baseado em um TD da qual faço parte como coautor, realizada no âmbito do IPEA.</p>
+<blockquote class="blockquote">
+<p>Este post republica, com fins de divulgação e sob a licença Creative Commons CC-BY-NC-ND, a matéria “Mais lideranças negras”, publicada na edição impressa nº 353 da <em>Revista Pesquisa FAPESP</em> (julho de 2025), com texto de Sarah Schmidt.</p>
+</blockquote>
 <hr>
+<section id="introdução" class="level3">
+<h3 class="anchored" data-anchor-id="introdução">Introdução</h3>
+<p>A proporção de pesquisadores pretos e pardos que lideram grupos de pesquisa no Brasil <strong>praticamente triplicou entre 2000 e 2023</strong>, passando de 8,1% para 22,6% do total — quase 15 mil dos 66 mil líderes no país. Esses dados fazem parte de uma análise realizada por pesquisadores do Ipea e IFNMG com base no censo do Diretório de Grupos de Pesquisa (DPG) do CNPq.</p>
+<p><a href="https://revistapesquisa.fapesp.br/cresce-a-proporcao-de-negros-no-comando-de-grupos-de-pesquisa-do-pais/"><img src="https://revistapesquisa.fapesp.br/wp-content/uploads/2025/07/RPF-lideranca-negra-2025-07-1140.jpg" class="img-fluid"></a></p>
+<p>Mesmo em regiões majoritariamente negras, como o Norte e o Nordeste, a <strong>presença de pesquisadores negros em posições de liderança ainda é inferior à sua participação demográfica</strong>. Ainda assim, os dados apontam um avanço consistente.</p>
+<hr>
+</section>
+<section id="destaques-do-estudo" class="level2">
+<h2 class="anchored" data-anchor-id="destaques-do-estudo">Destaques do estudo</h2>
+<ul>
+<li>De 2000 a 2023, a proporção de líderes negros:
+<ul>
+<li>No <strong>Nordeste</strong> subiu de 22,3% → <strong>37,7%</strong></li>
+<li>No <strong>Centro-Oeste</strong> de 10,2% → <strong>24,2%</strong></li>
+<li>No <strong>Norte</strong> de 33% → <strong>44,4%</strong></li>
+</ul></li>
+<li>A <strong>Lei de Cotas</strong> (2012) e o programa <strong>Reuni</strong> (2007) podem ter influenciado esse crescimento.</li>
+<li>A <strong>autodeclaração racial</strong> também se transformou, com mais pesquisadores se identificando como negros ao longo do tempo.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../img/p_cluster_2023.png" class="img-fluid figure-img"></p>
+<figcaption>Análise Multivariada</figcaption>
+</figure>
+</div>
+<p>📄 O texto completo da pesquisa original está disponível no repositório do Ipea:<br>
+👉 <a href="https://repositorio.ipea.gov.br/handle/11058/16914">Leia aqui o Texto para Discussão nº 3129</a></p>
+<hr>
+<blockquote class="blockquote">
+<p>🔗 Leia a matéria completa na <a href="https://revistapesquisa.fapesp.br/cresce-a-proporcao-de-negros-no-comando-de-grupos-de-pesquisa-do-pais/">Revista Pesquisa FAPESP</a></p>
+</blockquote>
+<hr>
+</section>
+<section id="referências" class="level2">
+<h2 class="anchored" data-anchor-id="referências">Referências</h2>
+<ul>
+<li>CHIARINI, T. et al.&nbsp;<a href="https://repositorio.ipea.gov.br/handle/11058/16914">Liderança negra na ciência: evidências com base no Diretório de Grupos de Pesquisa (CNPq)</a>. Texto para Discussão n.&nbsp;3129, Ipea, 2025.</li>
+</ul>
+<hr>
+<hr>
+</section>
+<section id="resumo-executivo" class="level2">
+<h2 class="anchored" data-anchor-id="resumo-executivo">Resumo Executivo</h2>
+<iframe src="lideranca_negra_ipea2025.pdf" width="100%" height="800px" style="border: none;">
+<p>Este navegador não suporta visualização de PDF. <a href="lideranca_negra_ipea2025.pdf">Clique aqui para baixar o arquivo</a>.</p>
+</iframe>
+<blockquote class="blockquote">
+<p>Este post foi elaborado com base em estudo do qual sou coautor e está disponível sob a licença Creative Commons <a href="https://creativecommons.org/licenses/by-nd/4.0/">CC-BY-NC-ND</a>.</p>
+</blockquote>
 
 
+</section>
+</section>
 
-
-<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
-<div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-categories="ZGF0YS12aXN1YWxpemF0aW9uJTJDdHJhbnNwb3J0ZSUyQ3BsYXRhZm9ybWFz" data-listing-date-sort="1754017200000" data-listing-file-modified-sort="1754087805793" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="458">
-<a href="../posts/5_plataformas_transportes/mapa_plataformas.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="../posts/5_plataformas_transportes/img/mapa_uber_99_brasil.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Onde operam as plataformas de transporte no Brasil?
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('ZGF0YS12aXN1YWxpemF0aW9u'); return false;">data-visualization</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('dHJhbnNwb3J0ZQ=='); return false;">transporte</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('cGxhdGFmb3JtYXM='); return false;">plataformas</div>
-
-</div>
-<div class="card-text listing-description delink">
-As plataformas de transporte por aplicativo transformaram a mobilidade urbana nas últimas décadas. No Brasil, empresas como a <strong>Uber</strong> e a <strong>99</strong> se espalharam por centenas de…
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-Aug 1, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="1" data-categories="Y2klQzMlQUFuY2lhJTJDZGVzaWd1YWxkYWRlcyUyQ3Blc3F1aXNhJTJDSXBlYQ==" data-listing-date-sort="1754017200000" data-listing-file-modified-sort="1754014417470" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="375">
-<a href="../posts/3_lideracan_cientifica/ipea_lid_grupos.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="../img/p_cluster_2023.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Mais lideranças negras na ciência brasileira
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('Y2klQzMlQUFuY2lh'); return false;">ciência</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('ZGVzaWd1YWxkYWRlcw=='); return false;">desigualdades</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('cGVzcXVpc2E='); return false;">pesquisa</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('SXBlYQ=='); return false;">Ipea</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>Análise do aumento da presença de pretos e pardos na liderança de grupos de pesquisa no Brasil com base no Diretório de Grupos de Pesquisa (CNPq).</p>
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-Aug 1, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="2" data-categories="ZGVtb2dyYWZpYSUyQ21hcGFzJTJDZGF0YXZpeiUyQ1I=" data-listing-date-sort="1753930800000" data-listing-file-modified-sort="1754014159259" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="433">
-<a href="../posts/4_pop_negra_municipios/populacao_negra.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="../img/mapa_proporcao_negros.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Distribuição Espacial da População Negra no Brasil
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('ZGVtb2dyYWZpYQ=='); return false;">demografia</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('bWFwYXM='); return false;">mapas</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('ZGF0YXZpeg=='); return false;">dataviz</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Ug=='); return false;">R</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>Mapeamento da proporção da população negra por região intermediária com base no Censo 2022.</p>
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-Jul 31, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="3" data-categories="dHJhbnNpJUMzJUE3JUMzJUEzbyUyMHZlcmRlJTJDaW5vdmElQzMlQTclQzMlQTNvJTJDcG9sJUMzJUFEdGljYXMlMjBwJUMzJUJBYmxpY2FzJTJDSXBlYQ==" data-listing-date-sort="1739588400000" data-listing-file-modified-sort="1754083133565" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="348">
-<a href="../posts/2_twin_transition/twin_transition.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="../img/metodologia_nt.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Transição Verde e Digital: o papel das organizações internacionais
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('dHJhbnNpJUMzJUE3JUMzJUEzbyUyMHZlcmRl'); return false;">transição verde</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('aW5vdmElQzMlQTclQzMlQTNv'); return false;">inovação</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('cG9sJUMzJUFEdGljYXMlMjBwJUMzJUJBYmxpY2Fz'); return false;">políticas públicas</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('SXBlYQ=='); return false;">Ipea</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>Interpretações do conceito de “transição gêmea” por parte de organizações internacionais e suas implicações para o desenvolvimento sustentável e tecnológico.</p>
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-Feb 15, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="4" data-categories="YmlvZWNvbm9taWElMkNhbWF6JUMzJUI0bmlhJTJDc3VzdGVudGFiaWxpZGFkZQ==" data-listing-date-sort="1705287600000" data-listing-file-modified-sort="1754084303291" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="438">
-<a href="../posts/1_bioeconomia/bioeconomia.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="1_bioeconomia/images/uso_terra.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Modelagem para Bioeconomia na Amazônia
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('YmlvZWNvbm9taWE='); return false;">bioeconomia</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('YW1heiVDMyVCNG5pYQ=='); return false;">amazônia</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('c3VzdGVudGFiaWxpZGFkZQ=='); return false;">sustentabilidade</div>
-
-</div>
-<div class="card-text listing-description delink">
-Este post se baseia no estudo “Impactos da Bioeconomia na Amazônia em Cenários de Mudanças Ambientais”, desenvolvido no âmbito da Cátedra Escolhas de Economia e Meio…
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-Jan 15, 2024
-</div>
-</div>
-</div>
-</div></a>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

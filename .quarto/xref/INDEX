@@ -31,5 +31,20 @@
   },
   "posts/mapa_plataformas.qmd": {
     "mapa_plataformas.html": "a64970d5"
+  },
+  "posts/2_twin_transition/twin_transition.qmd": {
+    "twin_transition.html": "74085f42"
+  },
+  "posts/4_pop_negra_municipios/populacao_negra.qmd": {
+    "populacao_negra.html": "958951ae"
+  },
+  "posts/1_bioeconomia/bioeconomia.qmd": {
+    "bioeconomia.html": "78445361"
+  },
+  "posts/5_plataformas_transportes/mapa_plataformas.qmd": {
+    "mapa_plataformas.html": "88bccfab"
+  },
+  "posts/3_lideracan_cientifica/ipea_lid_grupos.qmd": {
+    "ipea_lid_grupos.html": "bad0cd01"
   }
 }

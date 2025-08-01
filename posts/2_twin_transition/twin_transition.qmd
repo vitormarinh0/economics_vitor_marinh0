@@ -1,0 +1,53 @@
+---
+title: "Transição Verde e Digital: o papel das organizações internacionais"
+date: 2025-02-15
+categories: [transição verde, inovação, políticas públicas, Ipea]
+description: Interpretações do conceito de “transição gêmea” por parte de organizações internacionais e suas implicações para o desenvolvimento sustentável e tecnológico.
+image: /img/metodologia_nt.png  # imagem de capa (use só uma!)
+format:
+  html:
+    toc: true
+---
+
+# Transição Gêmea: Verde e Digital
+
+Neste post, compartilho os principais destaques da Nota Técnica nº 140 (Diset/Ipea), da qual sou coautor junto a Tulio Chiarini, que analisa como diferentes **organizações internacionais** interpretam o conceito de **transição gêmea** — ou **transição dupla**, que articula as dimensões verde (ambiental) e digital (tecnológica).
+
+> Esta publicação está disponível no [repositório do Ipea](https://repositorio.ipea.gov.br/handle/11058/16859) e foi lançada em fevereiro de 2025.
+
+------------------------------------------------------------------------
+
+## Nota Técnica
+
+A nota busca:
+
+-   Apresentar as interpretações da **transição gêmea** feitas por organismos multilaterais;
+-   Destacar **semelhanças e nuances conceituais** nas abordagens;
+-   Analisar como essas organizações orientam políticas públicas globais por meio de **soft power**, com diferentes graus de enforcement.
+
+Organizações como a **OCDE**, o **Banco Mundial**, a **Comissão Europeia** e outras estão no centro dessa análise, por sua relevância na difusão de ideias e diretrizes que moldam estratégias nacionais e internacionais para a sustentabilidade e inovação.
+
+------------------------------------------------------------------------
+
+##  Efeito Rebote
+
+O efeito rebote, ilustrado no gráfico 1, elaborado a partir da leitura dos relatórios, refere-se à situação hipotéticaem que o aumento da eficiência no uso de recursos levaria, paradoxalmente, à elevação no consumo total dessesrecursos, como ilustrado pela área em vermelho do gráfico 1. Isso ocorreria porque a melhoria na eficiência tende-ria a reduzir os custos de utilização, o que poderia incentivar um uso mais intensivo ou abrangente dos recursos,anulando os benefícios esperados das melhorias de eficiência. A curva contínua representa o consumo de energiasem o efeito rebote. À medida que a eficiência energética aumentasse, o consumo de energia diminuiria, no exemplohipotético, de forma exponencial. Isso refletiria o comportamento esperado, ao melhorar a eficiência, o consumo deenergia tenderia a cair, pois as mesmas tarefas poderiam ser realizadas utilizando-se menos recursos. Por exemplo,nesse cenário, também seria possível que os ganhos de eficiência fossem tão grandes que gerassem economiade energia, como ilustrado pela área em verde.
+
+![](/img/metodologia_nt.png)
+
+------------------------------------------------------------------------
+
+## 📄 Leitura do documento completo
+
+<iframe src="nt_140.pdf" width="100%" height="800px" style="border: none;">
+
+Este navegador não suporta visualização de PDF. <a href="lideranca_negra_ipea2025.pdf">Clique aqui para baixar o arquivo</a>.
+
+</iframe>
+
+------------------------------------------------------------------------
+
+## 📝 Referência completa
+
+MARINHO, Vitor; CHIARINI, Tulio. *As Abordagens de organizações internacionais à questão da transição verde e digital*. Brasília: Ipea, fev. 2025. (Diset: Nota Técnica, 140).\
+🔗 DOI: <https://dx.doi.org/10.38116/ntdiset140-port>
