@@ -2,7 +2,7 @@
 title: ""
 image: profile.jpg
 about:
-  template: jolla
+  template: solana
   links:
     - icon: linkedin
       text: LinkedIn
@@ -12,4 +12,12 @@ about:
       href: https://github.com/vitormarinh0
 ---
 
-Sou economista e pesquisador com foco em desenvolvimento regional, sustentabilidade e políticas públicas. Atualmente sou doutorando em Economia pelo CEDEPLAR/UFMG. Neste blog, compartilho projetos, publicações, visualizações de dados e reflexões sobre temas que estudo.
+Sou economista e pesquisador com atuação nas áreas de **desenvolvimento regional**, **sustentabilidade**, **bioeconomia** e **políticas públicas baseadas em evidência**. Atualmente, sou **doutorando em Economia no CEDEPLAR/UFMG**, onde desenvolvo pesquisas sobre vulnerabilidade climática, modelagem econômica espacial e transição verde no Brasil.
+
+Neste blog, compartilho **projetos, análises, mapas interativos, dados abertos e publicações** relacionadas aos temas que estudo.
+
+📝 [Currículo Lattes](http://lattes.cnpq.br/7205965341395241)
+
+<iframe src="cv.pdf" width="100%" height="500px" style="border: none;">
+
+
