@@ -14,7 +14,7 @@ Nos últimos anos, diversos estudos têm evidenciado um crescimento importante, 
 
 > Este post republica, com fins de divulgação e sob a licença Creative Commons CC-BY-NC-ND, a matéria “Mais lideranças negras”, publicada na edição impressa nº 353 da *Revista Pesquisa FAPESP* (julho de 2025), com texto de Sarah Schmidt.
 
----
+------------------------------------------------------------------------
 
 ### Introdução
 
@@ -22,48 +22,44 @@ A proporção de pesquisadores pretos e pardos que lideram grupos de pesquisa no
 
 [![](https://revistapesquisa.fapesp.br/wp-content/uploads/2025/07/RPF-lideranca-negra-2025-07-1140.jpg)](https://revistapesquisa.fapesp.br/cresce-a-proporcao-de-negros-no-comando-de-grupos-de-pesquisa-do-pais/)
 
-<blockquote>
- “Houve um crescimento expressivo, mas ainda há uma grande sub-representação de pretos e pardos na coordenação de grupos de pesquisa em todas as regiões e áreas do conhecimento.” — *Tulio Chiarini, economista do Ipea*
-</blockquote>
-
 Mesmo em regiões majoritariamente negras, como o Norte e o Nordeste, a **presença de pesquisadores negros em posições de liderança ainda é inferior à sua participação demográfica**. Ainda assim, os dados apontam um avanço consistente.
 
----
+------------------------------------------------------------------------
 
 ## Destaques do estudo
 
-- De 2000 a 2023, a proporção de líderes negros:
-  - No **Nordeste** subiu de 22,3% → **37,7%**
-  - No **Centro-Oeste** de 10,2% → **24,2%**
-  - No **Norte** de 33% → **44,4%**
-- A **Lei de Cotas** (2012) e o programa **Reuni** (2007) podem ter influenciado esse crescimento.
-- A **autodeclaração racial** também se transformou, com mais pesquisadores se identificando como negros ao longo do tempo.
+-   De 2000 a 2023, a proporção de líderes negros:
+    -   No **Nordeste** subiu de 22,3% → **37,7%**
+    -   No **Centro-Oeste** de 10,2% → **24,2%**
+    -   No **Norte** de 33% → **44,4%**
+-   A **Lei de Cotas** (2012) e o programa **Reuni** (2007) podem ter influenciado esse crescimento.
+-   A **autodeclaração racial** também se transformou, com mais pesquisadores se identificando como negros ao longo do tempo.
 
-📄 O texto completo da pesquisa original está disponível no repositório do Ipea:  
+![Análise Multivariada](/img/p_cluster_2023.png)
+
+📄 O texto completo da pesquisa original está disponível no repositório do Ipea:\
 👉 [Leia aqui o Texto para Discussão nº 3129](https://repositorio.ipea.gov.br/handle/11058/16914)
 
----
+------------------------------------------------------------------------
 
 > 🔗 Leia a matéria completa na [Revista Pesquisa FAPESP](https://revistapesquisa.fapesp.br/cresce-a-proporcao-de-negros-no-comando-de-grupos-de-pesquisa-do-pais/)
 
----
+------------------------------------------------------------------------
 
 ## Referências
 
-- CHIARINI, T. et al. [Liderança negra na ciência: evidências com base no Diretório de Grupos de Pesquisa (CNPq)](https://repositorio.ipea.gov.br/handle/11058/16914). Texto para Discussão n. 3129, Ipea, 2025.
+-   CHIARINI, T. et al. [Liderança negra na ciência: evidências com base no Diretório de Grupos de Pesquisa (CNPq)](https://repositorio.ipea.gov.br/handle/11058/16914). Texto para Discussão n. 3129, Ipea, 2025.
 
----
+------------------------------------------------------------------------
 
-
----
+------------------------------------------------------------------------
 
 ## Resumo Executivo
 
 <iframe src="lideranca_negra_ipea2025.pdf" width="100%" height="800px" style="border: none;">
-  Este navegador não suporta visualização de PDF. 
-  <a href="lideranca_negra_ipea2025.pdf">Clique aqui para baixar o arquivo</a>.
+
+Este navegador não suporta visualização de PDF. <a href="lideranca_negra_ipea2025.pdf">Clique aqui para baixar o arquivo</a>.
+
 </iframe>
 
 > Este post foi elaborado com base em estudo do qual sou coautor e está disponível sob a licença Creative Commons [CC-BY-NC-ND](https://creativecommons.org/licenses/by-nd/4.0/).
-
-
