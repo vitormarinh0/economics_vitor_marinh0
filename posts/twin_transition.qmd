@@ -3,7 +3,7 @@ title: "Transição Verde e Digital: o papel das organizações internacionais"
 date: 2025-02-15
 categories: [transição verde, inovação, políticas públicas, Ipea]
 description: Interpretações do conceito de “transição gêmea” por parte de organizações internacionais e suas implicações para o desenvolvimento sustentável e tecnológico.
-image: /img/transicao_verde_digital.jpg
+image: /img/metodologia_nt.png  # imagem de capa (use só uma!)
 format:
   html:
     toc: true
