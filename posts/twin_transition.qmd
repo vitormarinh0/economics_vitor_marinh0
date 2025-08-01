@@ -33,7 +33,7 @@ Organizações como a **OCDE**, o **Banco Mundial**, a **Comissão Europeia** e 
 
 O efeito rebote, ilustrado no gráfico 1, elaborado a partir da leitura dos relatórios, refere-se à situação hipotéticaem que o aumento da eficiência no uso de recursos levaria, paradoxalmente, à elevação no consumo total dessesrecursos, como ilustrado pela área em vermelho do gráfico 1. Isso ocorreria porque a melhoria na eficiência tende-ria a reduzir os custos de utilização, o que poderia incentivar um uso mais intensivo ou abrangente dos recursos,anulando os benefícios esperados das melhorias de eficiência. A curva contínua representa o consumo de energiasem o efeito rebote. À medida que a eficiência energética aumentasse, o consumo de energia diminuiria, no exemplohipotético, de forma exponencial. Isso refletiria o comportamento esperado, ao melhorar a eficiência, o consumo deenergia tenderia a cair, pois as mesmas tarefas poderiam ser realizadas utilizando-se menos recursos. Por exemplo,nesse cenário, também seria possível que os ganhos de eficiência fossem tão grandes que gerassem economiade energia, como ilustrado pela área em verde.
 
-![](/img/efeito_rebote_Times.svg)
+![](/img/metodologia_nt.png)
 
 ------------------------------------------------------------------------
 
