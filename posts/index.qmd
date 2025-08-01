@@ -6,15 +6,16 @@ title-block-banner-image: ../img/banner_amz.jpg
 listing:
   contents: .
   sort: "date desc"
-  type: default
+  type: grid
   categories: true
-  fields: [title, date, categories, description]
+  fields: [title, date, categories, description, image]
 ---
 
-# Publicações do Blog
+::: {.circular-img}
+![](../img/foto_blog.jpeg)
+:::
 
 Bem-vindo ao meu blog! Aqui compartilho análises, visualizações e reflexões sobre temas como sustentabilidade, desigualdade racial, bioeconomia e políticas públicas.
 
-------------------------------------------------------------------------
 
-![](/img/foto_blog.jpeg)
+---

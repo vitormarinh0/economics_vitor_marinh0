@@ -7,6 +7,76 @@ page-layout: full
 title-block-banner: true
 ---
 
-A bioeconomia oferece caminhos promissores para o desenvolvimento sustentável da Amazônia, combinando conservação ambiental e geração de renda local.
+Este post se baseia no estudo “Impactos da Bioeconomia na Amazônia em Cenários de Mudanças Ambientais”, desenvolvido no âmbito da Cátedra Escolhas de Economia e Meio Ambiente. O artigo completo está disponível em: [escolhas.org/wp-content/uploads/2024/12/Artigo_Bioeconomia.pdf](Artigo Bioeconomia)
+
+Os cenários simulados destacam como a combinação entre políticas de desmatamento zero, implementadas a partir de 2030 e o estímulo à bioeconomia tem potencial para reconfigurar profundamente o uso da terra na Amazônia. No cenário sem política, o avanço da fronteira agrícola ocorre principalmente por meio da expansão de pastagens e cultivos, o que leva ao uso de aproximadamente 14 milhões de hectares até 2040, mesmo com a limitação do desmatamento após 2030.
 
 ![](images/uso_terra.png)
+
+Já no cenário com política de bioeconomia, observa-se uma forte contenção na conversão de áreas naturais, com redução significativa das áreas de pastagem (de 6,86 para 1,17 milhões de hectares) e uma estabilidade no uso agrícola, ao mesmo tempo em que aumenta a relevância de sistemas produtivos florestais sustentáveis. O efeito líquido dessa política é a preservação estimada de 9,83 milhões de hectares até 2040, destacando a bioeconomia como instrumento eficaz de compatibilização entre crescimento econômico regional e conservação ambiental, alinhado aos compromissos internacionais assumidos pelo Brasil.
+
+------------------------------------------------------------------------
+
+## 📜 Código para reprodução do gráfico
+
+<details>
+
+<summary><strong>🔍 Clique para expandir o código</strong></summary>
+
+
+``` python
+import matplotlib.pyplot as plt
+import pandas as pd
+
+# Dados para o cenário Sem Política
+data_b = {
+    "Year": [2025, 2030, 2035, 2040],
+    "Cultivo": [0.73, 2.16, 3.88, 5.83],
+    "Pastagem": [1.33, 2.83, 4.69, 6.86],
+    "Floresta Plantada": [0.28, 0.72, 1.27, 1.91]
+}
+
+# Dados para o cenário Com Política de Bioeconomia
+data_p = {
+    "Year": [2025, 2030, 2035, 2040],
+    "Cultivo": [0.60, 1.50, 2.23, 2.87],
+    "Pastagem": [1.23, 1.73, 1.59, 1.17],
+    "Floresta": [0.29, 0.47, 0.46, 0.45]
+}
+
+df_area_chart_b = pd.DataFrame(data_b).set_index('Year')
+df_area_chart_p = pd.DataFrame(data_p).set_index('Year')
+
+cores_personalizadas = ["#D72000", "#f7ce46", "#1BB6AF"]
+
+def annotate_values(ax, df):
+    for year in [2025, 2040]:
+        year_values = df.loc[year]
+        cumulative_height = 0
+        for col in df.columns:
+            val = year_values[col]
+            cumulative_height += val
+            y_pos = cumulative_height - val / 2
+            ax.text(year, y_pos, f'{val:.2f}', ha='center', va='center', fontsize=10)
+
+fig, axes = plt.subplots(1, 2, figsize=(15, 6))
+df_area_chart_b.plot.area(ax=axes[0], stacked=True, alpha=0.8, color=cores_personalizadas)
+annotate_values(axes[0], df_area_chart_b)
+axes[0].set_title('Uso da Terra - Sem Política (A)')
+axes[0].set_ylabel('Milhões de hectares')
+axes[0].set_xlabel('Ano')
+axes[0].grid(True, linestyle="--")
+
+df_area_chart_p.plot.area(ax=axes[1], stacked=True, alpha=0.8, color=cores_personalizadas)
+annotate_values(axes[1], df_area_chart_p)
+axes[1].set_title('Uso da Terra - Com Política de Bioeconomia (B)')
+axes[1].set_ylabel('Milhões de hectares')
+axes[1].set_xlabel('Ano')
+axes[1].grid(True, linestyle="--")
+
+plt.tight_layout()
+plt.savefig('uso_terra.png', dpi=300, transparent=True)
+plt.savefig('uso_terra.svg', format='svg', dpi=300)
+plt.show()
+</details>
+```

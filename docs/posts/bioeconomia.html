@@ -22,6 +22,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -114,7 +149,7 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page">
+    <div class="quarto-title column-page-left">
       <h1 class="title">Modelagem para Bioeconomia na Amazônia</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">bioeconomia</div>
@@ -125,7 +160,7 @@ ul.task-list li input[type="checkbox"] {
   </div>
     
   
-  <div class="quarto-title-meta column-page">
+  <div class="quarto-title-meta column-page-left">
 
       <div>
       <div class="quarto-title-meta-heading">Author</div>
@@ -148,20 +183,90 @@ ul.task-list li input[type="checkbox"] {
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#código-para-reprodução-do-gráfico" id="toc-código-para-reprodução-do-gráfico" class="nav-link active" data-scroll-target="#código-para-reprodução-do-gráfico">📜 Código para reprodução do gráfico</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content quarto-banner-title-block column-page" id="quarto-document-content">
+<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
 
 
 
 
 
-<p>A bioeconomia oferece caminhos promissores para o desenvolvimento sustentável da Amazônia, combinando conservação ambiental e geração de renda local.</p>
+<p>Este post se baseia no estudo “Impactos da Bioeconomia na Amazônia em Cenários de Mudanças Ambientais”, desenvolvido no âmbito da Cátedra Escolhas de Economia e Meio Ambiente. O artigo completo está disponível em: <a href="Artigo Bioeconomia">escolhas.org/wp-content/uploads/2024/12/Artigo_Bioeconomia.pdf</a></p>
+<p>Os cenários simulados destacam como a combinação entre políticas de desmatamento zero, implementadas a partir de 2030 e o estímulo à bioeconomia tem potencial para reconfigurar profundamente o uso da terra na Amazônia. No cenário sem política, o avanço da fronteira agrícola ocorre principalmente por meio da expansão de pastagens e cultivos, o que leva ao uso de aproximadamente 14 milhões de hectares até 2040, mesmo com a limitação do desmatamento após 2030.</p>
 <p><img src="images/uso_terra.png" class="img-fluid"></p>
+<p>Já no cenário com política de bioeconomia, observa-se uma forte contenção na conversão de áreas naturais, com redução significativa das áreas de pastagem (de 6,86 para 1,17 milhões de hectares) e uma estabilidade no uso agrícola, ao mesmo tempo em que aumenta a relevância de sistemas produtivos florestais sustentáveis. O efeito líquido dessa política é a preservação estimada de 9,83 milhões de hectares até 2040, destacando a bioeconomia como instrumento eficaz de compatibilização entre crescimento econômico regional e conservação ambiental, alinhado aos compromissos internacionais assumidos pelo Brasil.</p>
+<hr>
+<section id="código-para-reprodução-do-gráfico" class="level2">
+<h2 class="anchored" data-anchor-id="código-para-reprodução-do-gráfico">📜 Código para reprodução do gráfico</h2>
+<details>
+<summary>
+<strong>🔍 Clique para expandir o código</strong>
+</summary>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Dados para o cenário Sem Política</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>data_b <span class="op">=</span> {</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Year"</span>: [<span class="dv">2025</span>, <span class="dv">2030</span>, <span class="dv">2035</span>, <span class="dv">2040</span>],</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Cultivo"</span>: [<span class="fl">0.73</span>, <span class="fl">2.16</span>, <span class="fl">3.88</span>, <span class="fl">5.83</span>],</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Pastagem"</span>: [<span class="fl">1.33</span>, <span class="fl">2.83</span>, <span class="fl">4.69</span>, <span class="fl">6.86</span>],</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Floresta Plantada"</span>: [<span class="fl">0.28</span>, <span class="fl">0.72</span>, <span class="fl">1.27</span>, <span class="fl">1.91</span>]</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Dados para o cenário Com Política de Bioeconomia</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>data_p <span class="op">=</span> {</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Year"</span>: [<span class="dv">2025</span>, <span class="dv">2030</span>, <span class="dv">2035</span>, <span class="dv">2040</span>],</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Cultivo"</span>: [<span class="fl">0.60</span>, <span class="fl">1.50</span>, <span class="fl">2.23</span>, <span class="fl">2.87</span>],</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Pastagem"</span>: [<span class="fl">1.23</span>, <span class="fl">1.73</span>, <span class="fl">1.59</span>, <span class="fl">1.17</span>],</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Floresta"</span>: [<span class="fl">0.29</span>, <span class="fl">0.47</span>, <span class="fl">0.46</span>, <span class="fl">0.45</span>]</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>df_area_chart_b <span class="op">=</span> pd.DataFrame(data_b).set_index(<span class="st">'Year'</span>)</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>df_area_chart_p <span class="op">=</span> pd.DataFrame(data_p).set_index(<span class="st">'Year'</span>)</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>cores_personalizadas <span class="op">=</span> [<span class="st">"#D72000"</span>, <span class="st">"#f7ce46"</span>, <span class="st">"#1BB6AF"</span>]</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> annotate_values(ax, df):</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> year <span class="kw">in</span> [<span class="dv">2025</span>, <span class="dv">2040</span>]:</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>        year_values <span class="op">=</span> df.loc[year]</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>        cumulative_height <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> col <span class="kw">in</span> df.columns:</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>            val <span class="op">=</span> year_values[col]</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>            cumulative_height <span class="op">+=</span> val</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>            y_pos <span class="op">=</span> cumulative_height <span class="op">-</span> val <span class="op">/</span> <span class="dv">2</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>            ax.text(year, y_pos, <span class="ss">f'</span><span class="sc">{</span>val<span class="sc">:.2f}</span><span class="ss">'</span>, ha<span class="op">=</span><span class="st">'center'</span>, va<span class="op">=</span><span class="st">'center'</span>, fontsize<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">15</span>, <span class="dv">6</span>))</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>df_area_chart_b.plot.area(ax<span class="op">=</span>axes[<span class="dv">0</span>], stacked<span class="op">=</span><span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.8</span>, color<span class="op">=</span>cores_personalizadas)</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>annotate_values(axes[<span class="dv">0</span>], df_area_chart_b)</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].set_title(<span class="st">'Uso da Terra - Sem Política (A)'</span>)</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].set_ylabel(<span class="st">'Milhões de hectares'</span>)</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].set_xlabel(<span class="st">'Ano'</span>)</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].grid(<span class="va">True</span>, linestyle<span class="op">=</span><span class="st">"--"</span>)</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>df_area_chart_p.plot.area(ax<span class="op">=</span>axes[<span class="dv">1</span>], stacked<span class="op">=</span><span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.8</span>, color<span class="op">=</span>cores_personalizadas)</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>annotate_values(axes[<span class="dv">1</span>], df_area_chart_p)</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].set_title(<span class="st">'Uso da Terra - Com Política de Bioeconomia (B)'</span>)</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].set_ylabel(<span class="st">'Milhões de hectares'</span>)</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].set_xlabel(<span class="st">'Ano'</span>)</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].grid(<span class="va">True</span>, linestyle<span class="op">=</span><span class="st">"--"</span>)</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">'uso_terra.png'</span>, dpi<span class="op">=</span><span class="dv">300</span>, transparent<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">'uso_terra.svg'</span>, <span class="bu">format</span><span class="op">=</span><span class="st">'svg'</span>, dpi<span class="op">=</span><span class="dv">300</span>)</span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;/</span>details<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
+</details></section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

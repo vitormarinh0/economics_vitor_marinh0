@@ -45,3 +45,13 @@ p {
 .quarto-title-banner .description {
   display: none;
 }
+
+
+.circular-img img {
+  width: 180px;         /* ajuste o tamanho conforme preferir */
+  height: 180px;
+  border-radius: 50%;   /* transforma em círculo */
+  object-fit: cover;    /* mantém proporção, cortando excesso */
+  display: block;
+  margin: 0 auto;
+}

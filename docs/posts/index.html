@@ -79,9 +79,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-title','listing-date','listing-categories','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-title','listing-date','listing-categories','listing-description','listing-image',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
+      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description","listing-categories"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -190,13 +190,7 @@ window.Quarto = {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#publicações-do-blog" id="toc-publicações-do-blog" class="nav-link active" data-scroll-target="#publicações-do-blog">Publicações do Blog</a></li>
-  </ul>
-</nav>
+        
     <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(4)</span></div><div class="category" data-category="YW1heiVDMyVCNG5pYQ==">amazônia <span class="quarto-category-count">(1)</span></div><div class="category" data-category="YmlvZWNvbm9taWE=">bioeconomia <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y2klQzMlQUFuY2lh">ciência <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZGF0YXZpeg==">dataviz <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZGVtb2dyYWZpYQ==">demografia <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZGVzaWd1YWxkYWRlcw==">desigualdades <span class="quarto-category-count">(1)</span></div><div class="category" data-category="aW5vdmElQzMlQTclQzMlQTNv">inovação <span class="quarto-category-count">(1)</span></div><div class="category" data-category="SXBlYQ==">Ipea <span class="quarto-category-count">(2)</span></div><div class="category" data-category="bWFwYXM=">mapas <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cGVzcXVpc2E=">pesquisa <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cG9sJUMzJUFEdGljYXMlMjBwJUMzJUJBYmxpY2Fz">políticas públicas <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Ug==">R <span class="quarto-category-count">(1)</span></div><div class="category" data-category="c3VzdGVudGFiaWxpZGFkZQ==">sustentabilidade <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dHJhbnNpJUMzJUE3JUMzJUEzbyUyMHZlcmRl">transição verde <span class="quarto-category-count">(1)</span></div></div></div>
 <!-- main -->
 <main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
@@ -205,23 +199,25 @@ window.Quarto = {
 
 
 
-<section id="publicações-do-blog" class="level1">
-<h1>Publicações do Blog</h1>
+<div class="circular-img">
+<p><img src="../img/foto_blog.jpeg" class="img-fluid"></p>
+</div>
 <p>Bem-vindo ao meu blog! Aqui compartilho análises, visualizações e reflexões sobre temas como sustentabilidade, desigualdade racial, bioeconomia e políticas públicas.</p>
 <hr>
-<p><img src="../img/foto_blog.jpeg" class="img-fluid"></p>
 
 
 
-</section>
 
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="Y2klQzMlQUFuY2lhJTJDZGVzaWd1YWxkYWRlcyUyQ3Blc3F1aXNhJTJDSXBlYQ==" data-listing-date-sort="1754017200000" data-listing-file-modified-sort="1754014417470" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="375">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../posts/ipea_lid_grupos.html" class="no-external">Mais lideranças negras na ciência brasileira</a>
-</h3>
+<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
+<div class="list grid quarto-listing-cols-3">
+<div class="g-col-1" data-index="0" data-categories="Y2klQzMlQUFuY2lhJTJDZGVzaWd1YWxkYWRlcyUyQ3Blc3F1aXNhJTJDSXBlYQ==" data-listing-date-sort="1754017200000" data-listing-file-modified-sort="1754014417470" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="375">
+<a href="../posts/ipea_lid_grupos.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top"><img src="../img/p_cluster_2023.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Mais lideranças negras na ciência brasileira
+</h5>
 <div class="listing-categories">
 
 <div class="listing-category" onclick="window.quartoListingCategory('Y2klQzMlQUFuY2lh'); return false;">ciência</div>
@@ -233,23 +229,25 @@ window.Quarto = {
 <div class="listing-category" onclick="window.quartoListingCategory('SXBlYQ=='); return false;">Ipea</div>
 
 </div>
-<div class="delink listing-description"><a href="../posts/ipea_lid_grupos.html" class="no-external">
+<div class="card-text listing-description delink">
 <p>Análise do aumento da presença de pretos e pardos na liderança de grupos de pesquisa no Brasil com base no Diretório de Grupos de Pesquisa (CNPq).</p>
-</a></div>
 </div>
-<div class="metadata">
-<a href="../posts/ipea_lid_grupos.html" class="no-external">
+<div class="card-attribution card-text-small end">
 <div class="listing-date">
 Aug 1, 2025
 </div>
-</a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-categories="ZGVtb2dyYWZpYSUyQ21hcGFzJTJDZGF0YXZpeiUyQ1I=" data-listing-date-sort="1753930800000" data-listing-file-modified-sort="1754014159259" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="433">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../posts/populacao_negra.html" class="no-external">Distribuição Espacial da População Negra no Brasil</a>
-</h3>
+</div></a>
+</div>
+<div class="g-col-1" data-index="1" data-categories="ZGVtb2dyYWZpYSUyQ21hcGFzJTJDZGF0YXZpeiUyQ1I=" data-listing-date-sort="1753930800000" data-listing-file-modified-sort="1754014159259" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="433">
+<a href="../posts/populacao_negra.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top"><img src="../img/mapa_proporcao_negros.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Distribuição Espacial da População Negra no Brasil
+</h5>
 <div class="listing-categories">
 
 <div class="listing-category" onclick="window.quartoListingCategory('ZGVtb2dyYWZpYQ=='); return false;">demografia</div>
@@ -261,23 +259,27 @@ Aug 1, 2025
 <div class="listing-category" onclick="window.quartoListingCategory('Ug=='); return false;">R</div>
 
 </div>
-<div class="delink listing-description"><a href="../posts/populacao_negra.html" class="no-external">
+<div class="card-text listing-description delink">
 <p>Mapeamento da proporção da população negra por região intermediária com base no Censo 2022.</p>
-</a></div>
 </div>
-<div class="metadata">
-<a href="../posts/populacao_negra.html" class="no-external">
+<div class="card-attribution card-text-small end">
 <div class="listing-date">
 Jul 31, 2025
 </div>
-</a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="2" data-categories="dHJhbnNpJUMzJUE3JUMzJUEzbyUyMHZlcmRlJTJDaW5vdmElQzMlQTclQzMlQTNvJTJDcG9sJUMzJUFEdGljYXMlMjBwJUMzJUJBYmxpY2FzJTJDSXBlYQ==" data-listing-date-sort="1739588400000" data-listing-file-modified-sort="1754013256215" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="348">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../posts/twin_transition.html" class="no-external">Transição Verde e Digital: o papel das organizações internacionais</a>
-</h3>
+</div></a>
+</div>
+<div class="g-col-1" data-index="2" data-categories="dHJhbnNpJUMzJUE3JUMzJUEzbyUyMHZlcmRlJTJDaW5vdmElQzMlQTclQzMlQTNvJTJDcG9sJUMzJUFEdGljYXMlMjBwJUMzJUJBYmxpY2FzJTJDSXBlYQ==" data-listing-date-sort="1739588400000" data-listing-file-modified-sort="1754083133565" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="348">
+<a href="../posts/twin_transition.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="../img/metodologia_nt.png" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Transição Verde e Digital: o papel das organizações internacionais
+</h5>
 <div class="listing-categories">
 
 <div class="listing-category" onclick="window.quartoListingCategory('dHJhbnNpJUMzJUE3JUMzJUEzbyUyMHZlcmRl'); return false;">transição verde</div>
@@ -289,23 +291,25 @@ Jul 31, 2025
 <div class="listing-category" onclick="window.quartoListingCategory('SXBlYQ=='); return false;">Ipea</div>
 
 </div>
-<div class="delink listing-description"><a href="../posts/twin_transition.html" class="no-external">
+<div class="card-text listing-description delink">
 <p>Interpretações do conceito de “transição gêmea” por parte de organizações internacionais e suas implicações para o desenvolvimento sustentável e tecnológico.</p>
-</a></div>
 </div>
-<div class="metadata">
-<a href="../posts/twin_transition.html" class="no-external">
+<div class="card-attribution card-text-small end">
 <div class="listing-date">
 Feb 15, 2025
 </div>
-</a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="3" data-categories="YmlvZWNvbm9taWElMkNhbWF6JUMzJUI0bmlhJTJDc3VzdGVudGFiaWxpZGFkZQ==" data-listing-date-sort="1705287600000" data-listing-file-modified-sort="1754014159257" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="19">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../posts/bioeconomia.html" class="no-external">Modelagem para Bioeconomia na Amazônia</a>
-</h3>
+</div></a>
+</div>
+<div class="g-col-1" data-index="3" data-categories="YmlvZWNvbm9taWElMkNhbWF6JUMzJUI0bmlhJTJDc3VzdGVudGFiaWxpZGFkZQ==" data-listing-date-sort="1705287600000" data-listing-file-modified-sort="1754014159257" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="19">
+<a href="../posts/bioeconomia.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top"><img src="images/uso_terra.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Modelagem para Bioeconomia na Amazônia
+</h5>
 <div class="listing-categories">
 
 <div class="listing-category" onclick="window.quartoListingCategory('YmlvZWNvbm9taWE='); return false;">bioeconomia</div>
@@ -315,17 +319,16 @@ Feb 15, 2025
 <div class="listing-category" onclick="window.quartoListingCategory('c3VzdGVudGFiaWxpZGFkZQ=='); return false;">sustentabilidade</div>
 
 </div>
-<div class="delink listing-description"><a href="../posts/bioeconomia.html" class="no-external">
+<div class="card-text listing-description delink">
 A bioeconomia oferece caminhos promissores para o desenvolvimento sustentável da Amazônia, combinando conservação ambiental e geração de renda local.
-</a></div>
 </div>
-<div class="metadata">
-<a href="../posts/bioeconomia.html" class="no-external">
+<div class="card-attribution card-text-small end">
 <div class="listing-date">
 Jan 15, 2024
 </div>
-</a>
 </div>
+</div>
+</div></a>
 </div>
 </div>
 <div class="listing-no-matching d-none">No matching items</div>
