@@ -12,7 +12,7 @@ format:
 
 # 🗺️ População Negra por Região
 
-A história do Brasil é marcada por profundas desigualdades sociais e raciais, muitas das quais se refletem diretamente na ocupação e estruturação do território. Mais do que números, os dados do Censo 2022 nos ajudam a enxergar como essas desigualdades se desenham no espaço. A distribuição espacial da população negra (%) nos municipios  do país, apontam padrões que, ainda hoje, são heranças de processos históricos.
+A história do Brasil é marcada por profundas desigualdades sociais e raciais, muitas das quais se refletem diretamente na ocupação e estruturação do território. Mais do que números, os dados do Censo 2022 nos ajudam a enxergar como essas desigualdades se desenham no espaço. A distribuição espacial da população negra (%) nos municipios do país, apontam padrões que, ainda hoje, são heranças de processos históricos.
 
 Ao mapear a proporção de pessoas que se autodeclaram pretas ou pardas, observamos um Brasil diverso, mas também profundamente desigual. As regiões com maior concentração da população negra coincidem com áreas de vulnerabilidade econômica.
 
@@ -22,8 +22,11 @@ Ao mapear a proporção de pessoas que se autodeclaram pretas ou pardas, observa
 
 As maiores proporções de população negra estão concentradas nas regiões Norte e Nordeste. O Sudeste, embora seja a região mais populosa, apresenta uma distribuição desigual, com destaque para o Rio de Janeiro, que mantém elevada presença da população negra, em contraste com o interior de São Paulo e parte de Minas Gerais. Já o Sul do país registra as menores proporções, reflexo de processos históricos de migração europeia incentivada pelo Estado no século XIX.
 
-------------------------------------------------------------------------
+## Auto-declarados Pretos
 
+![](mapa_pretos.png)
+
+------------------------------------------------------------------------
 
 ```{r}
 #| echo: true
@@ -86,4 +89,3 @@ ggplot(base_modelo_censo_sf) +
 
 
 ```
-
