@@ -28,3 +28,7 @@ Sou **Vitor Marinho**, economista e pesquisador na interseção entre desenvolvi
 ---
 
 ## Últimas publicações
+
+::: {.circular-img}
+![](img/foto_blog.jpeg)
+:::

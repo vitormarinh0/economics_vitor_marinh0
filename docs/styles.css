@@ -47,11 +47,16 @@ p {
 }
 
 
+
+
 .circular-img img {
-  width: 180px;         /* ajuste o tamanho conforme preferir */
-  height: 180px;
-  border-radius: 50%;   /* transforma em círculo */
-  object-fit: cover;    /* mantém proporção, cortando excesso */
+  width: 160px;               /* ajuste conforme necessário */
+  height: 160px;
+  border-radius: 50%;         /* cria o círculo */
+  object-fit: cover;          /* mantém o conteúdo centralizado */
   display: block;
-  margin: 0 auto;
+  margin: 1em auto;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2); /* opcional: efeito leve */
 }
+
+
