@@ -4,6 +4,11 @@ page-layout: full
 title-block-banner: true
 title-block-banner-color: "#0d0d0d"
 title-block-banner-image: img/banner-amazonia.jpg
+format:
+  html:
+    theme: cosmo
+    css: styles/styles.css
+    toc: false
 listing:
   contents: posts
   sort: "date desc"
@@ -11,24 +16,25 @@ listing:
   categories: true
   sort-ui: false
   filter-ui: false
+extensions:
+  - quarto-ext/carousel
 ---
 
 # Bem-vindo ao Blog
 
-Sou **Vitor Marinho**, economista e pesquisador na interseção entre desenvolvimento regional, bioeconomia e sustentabilidade. Neste espaço, compartilho meus projetos, visualizações e reflexões.
-
-<div style="margin-top: 1em; font-size: 1.1em;">
-  <a href="https://github.com/vitormarinh0" target="_blank">
-    <i class="bi bi-github"></i> GitHub
-  </a> |
-  <a href="https://www.linkedin.com/in/vitor-marinho-a4b742242" target="_blank">
-    <i class="bi bi-linkedin"></i> LinkedIn
-  </a>
+<div style="text-align: center; margin-top: 1.5em;">
+  <img src="img/foto_blog.jpeg" alt="Vitor Marinho" style="width: 160px; height: 160px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 8px rgba(0,0,0,0.15);">
 </div>
+
+
+ Sou pesquisador apaixonado por entender a relação entre <strong>economia</strong>, <strong>meio ambiente</strong> e <strong>território</strong>, com foco em políticas públicas que promovam <strong>justiça climática</strong>, <strong>inovação verde</strong> e <strong>desenvolvimento sustentável</strong> no Brasil. Trabalho com dados, mapas e modelos econômicos aplicados.
+ 
+
+::: {style="margin-top: 1.5em; font-size: 1.1em;"}
+<a href="https://github.com/vitormarinh0" target="_blank"><i class="bi bi-github"></i> GitHub</a> |
+<a href="https://www.linkedin.com/in/vitor-marinho-a4b742242" target="_blank"><i class="bi bi-linkedin"></i> LinkedIn</a> |
+<a href="http://lattes.cnpq.br/7205965341395241" target="_blank"><i class="bi bi-journal-richtext"></i> Currículo Lattes</a>
+:::
+
 ---
 
-## Últimas publicações
-
-::: {.circular-img}
-![](img/foto_blog.jpeg)
-:::

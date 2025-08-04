@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Mundo Marinho",
     "section": "",
-    "text": "Sou Vitor Marinho, economista e pesquisador na interseção entre desenvolvimento regional, bioeconomia e sustentabilidade. Neste espaço, compartilho meus projetos, visualizações e reflexões.\n\n  GitHub  |   LinkedIn"
+    "text": "Bem-vindo ao Blog\n\n\n\nSou pesquisador apaixonado por entender a relação entre economia, meio ambiente e território, com foco em políticas públicas que promovam justiça climática, inovação verde e desenvolvimento sustentável no Brasil. Trabalho com dados, mapas e modelos econômicos aplicados.\n\n GitHub |  LinkedIn |  Currículo Lattes\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBlog\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOnde operam as plataformas de transporte no Brasil?\n\n\nVisualizando a presença de Uber e 99 em cada município\n\n\n\ndata-visualization\n\ntransporte\n\nplataformas\n\n\n\n\n\n\n\n\n\nAug 1, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nMais lideranças negras na ciência brasileira\n\n\n\n\n\n\nciência\n\ndesigualdades\n\npesquisa\n\nIpea\n\n\n\nAnálise do aumento da presença de pretos e pardos na liderança de grupos de pesquisa no Brasil com base no Diretório de Grupos de Pesquisa (CNPq).\n\n\n\n\n\nAug 1, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nDistribuição Espacial da População Negra no Brasil\n\n\n\n\n\n\ndemografia\n\nmapas\n\ndataviz\n\nR\n\n\n\nMapeamento da proporção da população negra por região intermediária com base no Censo 2022.\n\n\n\n\n\nJul 31, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nTransição Verde e Digital: o papel das organizações internacionais\n\n\n\n\n\n\ntransição verde\n\ninovação\n\npolíticas públicas\n\nIpea\n\n\n\nInterpretações do conceito de “transição gêmea” por parte de organizações internacionais e suas implicações para o desenvolvimento sustentável e tecnológico.\n\n\n\n\n\nFeb 15, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nModelagem para Bioeconomia na Amazônia\n\n\n\n\n\n\nbioeconomia\n\namazônia\n\nsustentabilidade\n\n\n\n\n\n\n\n\n\nJan 15, 2024\n\n\nVitor Marinho\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "projects/projects.html",
@@ -299,5 +299,19 @@
     "title": "Vitor Marinho",
     "section": "📩 Contato",
     "text": "📩 Contato\nCaso queira conversar sobre colaborações, projetos ou consultorias, sinta-se à vontade para me chamar pelo\nvitormarinho@cedeplar.ufmg.br\nLinkedIn."
+  },
+  {
+    "objectID": "index.html#publicações-recentes",
+    "href": "index.html#publicações-recentes",
+    "title": "Mundo Marinho",
+    "section": "",
+    "text": "Últimos posts\n\n\n\nExplore análises e visualizações que publiquei recentemente."
+  },
+  {
+    "objectID": "index.html#últimas-publicações",
+    "href": "index.html#últimas-publicações",
+    "title": "Mundo Marinho",
+    "section": "",
+    "text": "listing: contents: posts sort: “date desc” max-items: 6"
   }
 ]

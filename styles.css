@@ -1,4 +1,4 @@
-/* css styles */
+/* Importa fonte Inter */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
 
 /* Banner da página inicial */
@@ -7,55 +7,75 @@
   background-size: cover;
   background-position: center;
   color: white;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.7);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
   padding: 2em;
 }
 
-/* Fonte geral */
-body {
-  font-family: 'Inter', sans-serif;
-  background-color: #f8f9fa; /* cinza claro */
-  color: 		#0d0d0d;
-}
-
-/* Títulos */
-h1, h2, h3 {
-  color: #013328; /* verde escuro */
-}
-
-/* Links */
-a {
-  color: #9b1c1c; /* azul Google */
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-
-/* Justificar todos os parágrafos */
-p {
-  text-align: justify;
-}
-
-/* Remover texto sobre o banner */
+/* Remove título/supertítulo do banner */
 .quarto-title-banner .title,
 .quarto-title-banner .subtitle,
 .quarto-title-banner .description {
   display: none;
 }
 
-
-
-.circular-img img {
-  width: 160px;               /* ajuste conforme necessário */
-  height: 160px;
-  border-radius: 50%;         /* cria o círculo */
-  object-fit: cover;          /* mantém o conteúdo centralizado */
-  display: block;
-  margin: 1em auto;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2); /* opcional: efeito leve */
+/* Corpo do site */
+body {
+  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  background-color: #f8f9fa;  /* cinza claro */
+  color: #0d0d0d;
 }
 
+/* Títulos */
+h1, h2, h3 {
+  color: #013328;  /* verde escuro */
+}
 
+/* Parágrafos justificados */
+p {
+  text-align: justify;
+}
+
+/* Links */
+a {
+  color: #9b1c1c;  /* vermelho escuro */
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #006666;  /* verde azulado no hover */
+}
+
+/* Imagem circular (sobre mim) */
+.circular-img img,
+img.circular {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  margin: 1em auto;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo de cards e chamadas */
+.callout-note {
+  background-color: #f0f4f8;
+  border-left: 4px solid #0d0d0d;
+  padding: 1em;
+}
+
+/* Destaque em títulos de listagens */
+.card-title,
+.listing-title {
+  font-weight: bold;
+}
+
+/* Carrossel de imagens */
+.carousel figcaption {
+  text-align: center;
+  font-size: 1em;
+  font-weight: 500;
+  margin-top: 0.5em;
+  color: #333;
+}
