@@ -1,6 +1,9 @@
 ---
-title: ""
+title: "Vitor Marinho"
 image: profile.jpg
+page-layout: full
+title-block-banner: true
+title-block-banner-image: img/banner-amazonia.jpg
 about:
   template: solana
   links:
@@ -10,14 +13,51 @@ about:
     - icon: github
       text: GitHub
       href: https://github.com/vitormarinh0
+    - icon: file-earmark-person
+      text: Currículo Lattes
+      href: http://lattes.cnpq.br/7205965341395241
+    - icon: filetype-pdf
+      text: CV em PDF
+      href: cv.pdf
 ---
 
-Sou economista e pesquisador com atuação nas áreas de **desenvolvimento regional**, **sustentabilidade**, **bioeconomia** e **políticas públicas baseadas em evidência**. Atualmente, sou **doutorando em Economia no CEDEPLAR/UFMG**, onde desenvolvo pesquisas sobre vulnerabilidade climática, modelagem econômica espacial e transição verde no Brasil.
+## 👋 Sobre mim
 
-Neste blog, compartilho **projetos, análises, mapas interativos, dados abertos e publicações** relacionadas aos temas que estudo.
+Sou **economista e pesquisador** com atuação nas áreas de:
 
-📝 [Currículo Lattes](http://lattes.cnpq.br/7205965341395241)
+-   **Desenvolvimento regional**
+-   **Sustentabilidade e bioeconomia** -️ **Políticas públicas baseadas em evidência**
+-   **Modelagem econômica e espacial**
 
-<iframe src="cv.pdf" width="100%" height="500px" style="border: none;">
+Atualmente, sou **doutorando em Economia no CEDEPLAR/UFMG**, onde desenvolvo pesquisas sobre **vulnerabilidade climática**, **transição verde** e **impactos socioeconômicos das mudanças ambientais no Brasil**.
 
+------------------------------------------------------------------------
 
+## 📚 O que você encontrará neste blog
+
+Aqui compartilho:
+
+-   🔍 **Projetos de pesquisa**
+-   📈 **Análises e visualizações**
+-   🗺️ **Mapas interativos**
+-   🧾 **Notas técnicas e artigos**
+-   📂 **Bases de dados abertas**
+
+------------------------------------------------------------------------
+
+## 📎 Links úteis
+
+-   🧠 [Currículo Lattes](http://lattes.cnpq.br/7205965341395241)
+-   📄 [CV em PDF](cv.pdf)
+-   💼 [LinkedIn](https://www.linkedin.com/in/vitor-marinho-a4b742242)
+-   💻 [GitHub](https://github.com/vitormarinh0)
+
+------------------------------------------------------------------------
+
+## 📩 Contato
+
+Caso queira conversar sobre **colaborações, projetos ou consultorias**, sinta-se à vontade para me chamar pelo
+
+[vitormarinho\@cedeplar.ufmg.br](vitormarinho@cedeplar.ufmg.br)
+
+[LinkedIn](https://www.linkedin.com/in/vitor-marinho-a4b742242).
