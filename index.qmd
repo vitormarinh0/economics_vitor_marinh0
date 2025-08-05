@@ -6,9 +6,9 @@ title-block-banner-color: "#0d0d0d"
 title-block-banner-image: img/banner-amazonia.jpg
 format:
   html:
-    theme: cosmo
+    theme: styles/custom.scss
     css: styles/styles.css
-    toc: false
+    toc: True
 listing:
   contents: posts
   sort: "date desc"
@@ -36,5 +36,11 @@ extensions:
 <a href="http://lattes.cnpq.br/7205965341395241" target="_blank"><i class="bi bi-journal-richtext"></i> Currículo Lattes</a>
 :::
 
+
+
 ---
+
+<div style="text-align: center; font-size: 0.9em; color: #777; margin-top: 2em;">
+  © 2025 Vitor Marinho · Desenvolvido com <a href="https://quarto.org" target="_blank">Quarto</a>
+</div>
 

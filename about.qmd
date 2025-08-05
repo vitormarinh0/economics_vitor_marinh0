@@ -21,42 +21,19 @@ about:
       href: cv.pdf
 ---
 
-## 👋 Sobre mim
+Sou economista e pesquisador com atuação nas áreas de:
 
-Sou **economista e pesquisador** com atuação nas áreas de:
+-   Desenvolvimento regional
+-   Sustentabilidade e bioeconomia
+-   Modelagem econômica e espacial
 
--   **Desenvolvimento regional**
--   **Sustentabilidade e bioeconomia** -️ **Políticas públicas baseadas em evidência**
--   **Modelagem econômica e espacial**
-
-Atualmente, sou **doutorando em Economia no CEDEPLAR/UFMG**, onde desenvolvo pesquisas sobre **vulnerabilidade climática**, **transição verde** e **impactos socioeconômicos das mudanças ambientais no Brasil**.
-
-------------------------------------------------------------------------
-
-## 📚 O que você encontrará neste blog
-
-Aqui compartilho:
-
--   🔍 **Projetos de pesquisa**
--   📈 **Análises e visualizações**
--   🗺️ **Mapas interativos**
--   🧾 **Notas técnicas e artigos**
--   📂 **Bases de dados abertas**
-
-------------------------------------------------------------------------
-
-## 📎 Links úteis
-
--   🧠 [Currículo Lattes](http://lattes.cnpq.br/7205965341395241)
--   📄 [CV em PDF](cv.pdf)
--   💼 [LinkedIn](https://www.linkedin.com/in/vitor-marinho-a4b742242)
--   💻 [GitHub](https://github.com/vitormarinh0)
+Atualmente, sou doutorando em Economia no CEDEPLAR/UFMG, onde desenvolvo pesquisas sobre vulnerabilidade climática, transição verde e impactos socioeconômicos das mudanças ambientais no Brasil.
 
 ------------------------------------------------------------------------
 
 ## 📩 Contato
 
-Caso queira conversar sobre **colaborações, projetos ou consultorias**, sinta-se à vontade para me chamar pelo
+Caso queira conversar sobre colaborações, projetos ou consultorias, sinta-se à vontade para me chamar :
 
 [vitormarinho\@cedeplar.ufmg.br](vitormarinho@cedeplar.ufmg.br)
 
