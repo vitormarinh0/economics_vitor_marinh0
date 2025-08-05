@@ -20,7 +20,7 @@ extensions:
   - quarto-ext/carousel
 ---
 
-# Bem-vindo ao Blog
+# Bem-vindo
 
 <div style="text-align: center; margin-top: 1.5em;">
   <img src="img/foto_blog.jpeg" alt="Vitor Marinho" style="width: 160px; height: 160px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 8px rgba(0,0,0,0.15);">
