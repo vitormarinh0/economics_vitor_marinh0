@@ -60,7 +60,7 @@
     "href": "index.html",
     "title": "\nVitor Marinho\n",
     "section": "",
-    "text": "Pesquisador em desenvolvimento regional, bioeconomia e sustentabilidade\n    \n        Author: Vitor Marinho\n    \n    \n    \n    \n    \n  \n\n\n\n  \n    \n    \n    \n  \n\n\n\n\n\nVitor Marinho\n\n\nPesquisador em desenvolvimento regional, bioeconomia e sustentabilidade\n\n\n\nSou pesquisador apaixonado por entender a relação entre economia, meio ambiente e território, com foco em políticas públicas que promovam justiça climática, inovação verde e desenvolvimento sustentável no Brasil. Trabalho com dados, mapas e modelos econômicos aplicados."
+    "text": "Vitor Marinho\n\n\nPesquisador em desenvolvimento regional, bioeconomia e sustentabilidade\n\n\n\nSou pesquisador apaixonado por entender a relação entre economia, meio ambiente e território, com foco em políticas públicas que promovam justiça climática, inovação verde e desenvolvimento sustentável no Brasil. Trabalho com dados, mapas e modelos econômicos aplicados."
   },
   {
     "objectID": "posts/ipea_lid_grupos.html",
@@ -495,5 +495,96 @@
     "title": "Comunidades Quilombolas no Brasil: presença, resistência e território",
     "section": "Código em Python (matplotlib + geopandas)",
     "text": "Código em Python (matplotlib + geopandas)\n\n\nExibir código\nimport pandas as pd\nimport geopandas as gpd\nimport matplotlib.pyplot as plt\n\n# 1. Corrigir as colunas de coordenadas\nquilombos_grouped['Lat_d'] = pd.to_numeric(quilombos_grouped['Lat_d'], errors='coerce')\nquilombos_grouped['Long_d'] = pd.to_numeric(quilombos_grouped['Long_d'], errors='coerce')\n\n# Remover linhas com valores inválidos de coordenadas\nquilombos_grouped = quilombos_grouped.dropna(subset=['Lat_d', 'Long_d'])\n\n# 2. Criar a coluna 'faixa' com base em 'num_localidades'\nquilombos_grouped['num_localidades'] = pd.to_numeric(quilombos_grouped['num_localidades'], errors='coerce')\nbins = [0, 6, 18, 36, 72, 122, float('inf')]  # Limites das faixas\nlabels = ['1-6', '7-18', '19-36', '37-72', '73-122', '123+']  # Rótulos das faixas\nquilombos_grouped['faixa'] = pd.cut(quilombos_grouped['num_localidades'], bins=bins, labels=labels, right=True)\n\n# Verificar o resultado\nprint(quilombos_grouped[['num_localidades', 'faixa', 'Lat_d', 'Long_d']].head())\n\n# 3. Criar o dicionário de cores\nfaixa_colors = {\n    '1-6': '#ff7f0e',    # Laranja\n    '7-18': '#1f77b4',   # Azul\n    '19-36': '#2ca02c',  # Verde\n    '37-72': '#d62728',  # Vermelho\n    '73-122': '#9467bd', # Roxo\n    '123+': '#8c564b'    # Marrom\n}\n\n# 4. Carregar o GeoDataFrame de estados (mapa base)\nufs = read_state(year=2020)\n\n# 5. Criar o mapa\nfig, ax = plt.subplots(1, 1, figsize=(12, 10))\nufs.plot(ax=ax, color=\"#f2e0c9\", edgecolor=\"gray\")\n\n# Adicionar os pontos ao mapa\nfor faixa, color in faixa_colors.items():\n    subset = quilombos_grouped[quilombos_grouped['faixa'] == faixa]\n    size = subset['num_localidades'] * 6  # Multiplicador ajustado para visualização proporcional\n    ax.scatter(\n        subset['Long_d'],\n        subset['Lat_d'],\n        color=color,\n        label=faixa,\n        alpha=0.8,\n        s=size  # Aplicar tamanho baseado diretamente no número de localidades\n    )\n\n# Adicionar legenda\nax.legend(title=\"Faixa\", loc='lower left', fontsize=10)\n\n# Configurações do mapa\nax.set_title(\"Comunidades Quilombolas por Município\", fontsize=16, fontweight=\"bold\")\nax.set_axis_off()\n\n# Salvar ou exibir o mapa\nplt.tight_layout()\nplt.savefig(\"mapa_comunidades_quilombolas.png\", dpi=320)\nplt.show()"
+  },
+  {
+    "objectID": "posts/15_area_plantada/producao_cerrado.html",
+    "href": "posts/15_area_plantada/producao_cerrado.html",
+    "title": "Produção, Área e Produtividade das Principais Culturas no Cerrado (2010–2022)",
+    "section": "",
+    "text": "O Cerrado é o coração da agricultura brasileira. As culturas de soja, milho, cana-de-açúcar e algodão concentram a maior parte da área cultivada no bioma. Este post reúne três perspectivas analíticas para o período de 2010 a 2022:\n\nValor da produção agrícola\nÁrea plantada total\nProdutividade média por hectare"
+  },
+  {
+    "objectID": "posts/15_area_plantada/producao_cerrado.html#agricultura-no-cerrado-produtividade-e-expansão-territorial",
+    "href": "posts/15_area_plantada/producao_cerrado.html#agricultura-no-cerrado-produtividade-e-expansão-territorial",
+    "title": "Produção, Área e Produtividade das Principais Culturas no Cerrado (2010–2022)",
+    "section": "",
+    "text": "O Cerrado é o coração da agricultura brasileira. As culturas de soja, milho, cana-de-açúcar e algodão concentram a maior parte da área cultivada no bioma. Este post reúne três perspectivas analíticas para o período de 2010 a 2022:\n\nValor da produção agrícola\nÁrea plantada total\nProdutividade média por hectare"
+  },
+  {
+    "objectID": "posts/15_area_plantada/producao_cerrado.html#valor-da-produção-agrícola",
+    "href": "posts/15_area_plantada/producao_cerrado.html#valor-da-produção-agrícola",
+    "title": "Produção, Área e Produtividade das Principais Culturas no Cerrado (2010–2022)",
+    "section": "1. Valor da Produção Agrícola",
+    "text": "1. Valor da Produção Agrícola\n\n\nA soja lidera com ampla vantagem, ultrapassando R$ 250 bilhões em 2022.\nO milho segue em segundo, com forte crescimento recente, especialmente após 2020.\nA cana-de-açúcar mantém crescimento moderado.\nO algodão é menor em volume, mas com crescimento consistente."
+  },
+  {
+    "objectID": "posts/15_area_plantada/producao_cerrado.html#área-plantada-por-cultura",
+    "href": "posts/15_area_plantada/producao_cerrado.html#área-plantada-por-cultura",
+    "title": "Produção, Área e Produtividade das Principais Culturas no Cerrado (2010–2022)",
+    "section": "2. Área Plantada por Cultura",
+    "text": "2. Área Plantada por Cultura\n\n\nO crescimento sustentado da área total plantada, puxado principalmente pela soja.\nA expansão da soja é a principal responsável pela pressão sobre o uso da terra.\nO milho, plantado em rotação ou como safrinha, também ganha área de forma importante.\nA área da cana-de-açúcar permanece estável, indicando maturidade produtiva.\nO algodão cresce de forma mais lenta, mas com ganhos de produtividade relevantes."
+  },
+  {
+    "objectID": "posts/15_area_plantada/producao_cerrado.html#produtividade-média-rhectare",
+    "href": "posts/15_area_plantada/producao_cerrado.html#produtividade-média-rhectare",
+    "title": "Produção, Área e Produtividade das Principais Culturas no Cerrado (2010–2022)",
+    "section": "3. Produtividade Média (R$/Hectare)",
+    "text": "3. Produtividade Média (R$/Hectare)\n\nProdutividade, calculada como valor da produção por hectare:\n\nO algodão tem os maiores ganhos relativos de produtividade, ultrapassando R$ 20 mil/ha.\nA soja apresenta crescimento expressivo após 2020, refletindo tanto aumento de preços quanto eficiência.\nA cana-de-açúcar mantém produtividade estável, com leve tendência de alta.\nO milho registra saltos relevantes após 2020, com produtividades médias próximas de R$ 30 mil/ha.\n\n\n\n\nExibir código\ndados_receita_media &lt;- dados_agricolas_2010_2023 %&gt;%\n  filter(D3N %in% c(\"Área plantada\", \"Valor da produção\")) %&gt;%\n  group_by(D2N, D4N, D3N) %&gt;%\n  summarise(valor_total = sum(V, na.rm = TRUE), .groups = \"drop\") %&gt;%\n  pivot_wider(names_from = D3N, values_from = valor_total) %&gt;%\n  mutate(receita_media = (`Valor da produção` / `Área plantada`)) %&gt;%  # Ajuste da escala\n  filter(!is.na(receita_media)) %&gt;%\n  mutate(D2N = as.numeric(D2N))  # Converter anos para numérico\n\n# Reutilizar a função para gráficos\ngrafico_cultura &lt;- function(cultura, cor, limites, intervalos) {\n  ggplot(filter(dados_receita_media, D4N == cultura),\n         aes(x = D2N, y = receita_media)) +\n    geom_line(color = cor, size = 1) +\n    geom_point(color = cor, size = 2) +\n    scale_x_continuous(breaks = seq(2010, 2023, 1)) +\n    scale_y_continuous(\n      limits = limites,\n      breaks = seq(limites[1], limites[2], by = intervalos),\n      labels = scales::comma_format(big.mark = \".\", decimal.mark = \",\")\n    ) +\n    labs(\n      title = cultura,\n      x = \"Ano\",\n      y = \"Receita Média (mil reais/ha)\"\n    ) +\n    theme_minimal() +\n    theme(\n      axis.text.x = element_text(angle = 45, hjust = 1),\n      plot.title = element_text(face = \"bold\", hjust = 0.5)\n    )\n}\n\n# Definir limites para cada cultura\nlimites_soja &lt;- c(0, 9)\nlimites_milho &lt;- c(0, 7)\nlimites_algodao &lt;- c(0, 20)\nlimites_cana &lt;- c(0, 12)\n\n# Gerar gráficos\ngrafico_soja &lt;- grafico_cultura(\"Soja (em grão)\", \"darkgreen\", limites_soja, 1)\ngrafico_milho &lt;- grafico_cultura(\"Milho (em grão)\", \"orange\", limites_milho, 1)\ngrafico_algodao &lt;- grafico_cultura(\"Algodão herbáceo (em caroço)\", \"blue\", limites_algodao, 5)\ngrafico_cana &lt;- grafico_cultura(\"Cana-de-açúcar\", \"red\", limites_cana, 2)\n\n# Combinar os gráficos\ngrafico_combinado &lt;- grafico_soja + grafico_milho + grafico_algodao + grafico_cana +\n  plot_layout(ncol = 2) +\n  plot_annotation(\n    theme = theme(\n      plot.title = element_text(size = 18, face = \"bold\", hjust = 0.5),\n      plot.subtitle = element_text(size = 12, hjust = 0.5)\n    )\n  )\n\n\n# Salvar em alta resolução\nggsave(\n  filename = \"mapa_bolhas/receita_media_culturas_corrigida.png\",\n  plot = grafico_combinado,\n  width = 12, height = 8, units = \"in\",\n  dpi = 300,\n  bg = \"white\"\n)\n\n\n\nEste post faz parte da série sobre uso da terra e dinâmica agrícola no Cerrado. Para outros conteúdos, acesse todos os posts."
+  },
+  {
+    "objectID": "posts/15_area_plantada/producao_cerrado.html#considerações-finais",
+    "href": "posts/15_area_plantada/producao_cerrado.html#considerações-finais",
+    "title": "Produção, Área e Produtividade das Principais Culturas no Cerrado (2010–2022)",
+    "section": "Considerações finais",
+    "text": "Considerações finais\nA evolução dos dados mostra um Cerrado cada vez mais inserido na agricultura intensiva de alta escala, com destaque para:\n\nAvanço da tecnificação, principalmente na soja e milho\nCrescimento de produtividade no algodão\nEstagnação relativa da área da cana-de-açúcar\nFortes implicações socioambientais ligadas à expansão da área agrícola e ao uso intensivo de insumos\n\nO desafio para os próximos anos será conciliar expansão com sustentabilidade, garantindo que o aumento de produtividade não se dê à custa de desmatamento, esgotamento hídrico ou exclusão de pequenos produtores.\n\nEste post faz parte da série sobre uso da terra e dinâmica agrícola no Cerrado. Para outros conteúdos, acesse todos os posts."
+  },
+  {
+    "objectID": "posts/16_rede_Cuba/rede_cuba.html",
+    "href": "posts/16_rede_Cuba/rede_cuba.html",
+    "title": "Rede de Colaboração Científica de Instituições Cubanas",
+    "section": "",
+    "text": "O gráfico abaixo representa a rede de colaboração institucional entre autores vinculados ao grupo BioCubaFarma, ao CECMED (órgão regulador cubano), e seus parceiros internacionais, com base em 219 artigos publicados entre 1997 e 2024.\nPost: https://www.ipea.gov.br/cts/pt/central-de-conteudo/artigos/artigos/486-colaboracao-cientifica-o-caso-de-empresas-farmaceuticas-e-de-biotecnologia-cubanas?highlight=WyJ0dWxpbyJd"
+  },
+  {
+    "objectID": "posts/16_rede_Cuba/rede_cuba.html#colaboração-científica-como-estratégia-de-soberania-tecnológica",
+    "href": "posts/16_rede_Cuba/rede_cuba.html#colaboração-científica-como-estratégia-de-soberania-tecnológica",
+    "title": "Rede de Colaboração Científica de Instituições Cubanas",
+    "section": "",
+    "text": "O gráfico abaixo representa a rede de colaboração institucional entre autores vinculados ao grupo BioCubaFarma, ao CECMED (órgão regulador cubano), e seus parceiros internacionais, com base em 219 artigos publicados entre 1997 e 2024.\nPost: https://www.ipea.gov.br/cts/pt/central-de-conteudo/artigos/artigos/486-colaboracao-cientifica-o-caso-de-empresas-farmaceuticas-e-de-biotecnologia-cubanas?highlight=WyJ0dWxpbyJd"
+  },
+  {
+    "objectID": "posts/16_rede_Cuba/rede_cuba.html#metodologia",
+    "href": "posts/16_rede_Cuba/rede_cuba.html#metodologia",
+    "title": "Rede de Colaboração Científica de Instituições Cubanas",
+    "section": "Metodologia",
+    "text": "Metodologia\nA rede foi construída a partir de dados extraídos das bases Web of Science e Scopus, utilizando:\n\nExtração de coautorias por instituição\nAgrupamento por par de instituições com contagem de frequência\nGeração de um grafo não direcionado (networkx)\nDetecção de comunidades modulares (greedy_modularity_communities)\nTamanhos dos nós e arestas ajustados conforme grau de colaboração"
+  },
+  {
+    "objectID": "posts/16_rede_Cuba/rede_cuba.html#destaques-da-rede",
+    "href": "posts/16_rede_Cuba/rede_cuba.html#destaques-da-rede",
+    "title": "Rede de Colaboração Científica de Instituições Cubanas",
+    "section": "Destaques da rede",
+    "text": "Destaques da rede\n\nA rede é altamente concentrada em instituições cubanas, com BioCubaFarma, CIM, CIDEM, CIGB e CECMED no núcleo.\nA Universidade de Havana, o Instituto de Inmunología Molecular (CIM) e o Finlay (IFV) aparecem como hubs centrais da ciência biomédica cubana.\nInstituições da China, Espanha, Brasil e Estados Unidos formam núcleos periféricos, conectados por publicações coassinadas."
+  },
+  {
+    "objectID": "posts/16_rede_Cuba/rede_cuba.html#parcerias-internacionais",
+    "href": "posts/16_rede_Cuba/rede_cuba.html#parcerias-internacionais",
+    "title": "Rede de Colaboração Científica de Instituições Cubanas",
+    "section": "Parcerias internacionais",
+    "text": "Parcerias internacionais\nSegundo a análise:\n\nChina: colaboração intensa com universidades (Sichuan, Shanghai, Nanjing) e empresas (Olisynn Biotech, PRIMA Drug), com foco em vacinas e biotecnologia.\nBrasil: 45 autores em 16 artigos, com destaque para a UFRGS, UFBA, UFSC, ANVISA e o Hospital Albert Einstein, atuando majoritariamente com o CIDEM.\nEstados Unidos: coautorias com universidades como Arizona, Pittsburgh, e o Hospital de Cincinnati, apesar do embargo."
+  },
+  {
+    "objectID": "posts/16_rede_Cuba/rede_cuba.html#código-base-python",
+    "href": "posts/16_rede_Cuba/rede_cuba.html#código-base-python",
+    "title": "Rede de Colaboração Científica de Instituições Cubanas",
+    "section": "Código base (Python)",
+    "text": "Código base (Python)\n\n\nExibir código\n#!pip install openpyxl # install the module for reading excel files\nimport pandas as pd\nimport networkx as nx\nimport matplotlib.pyplot as plt\nimport re\nfrom adjustText import adjust_text  # Biblioteca para evitar sobreposição de textos\nfrom networkx.algorithms import community  # Para detectar clusters\n\n# 🔹 1. Carregar o DataFrame (substitua pelo nome do seu arquivo)\ndf = pd.read_excel(\"/content/drive/MyDrive/bibliometria_cuba/Cuba_Autores_Inst_20.xlsx\")  # Substitua pelo seu arquivo\n\n# 🔹 2. Filtrar apenas as colunas de instituições\ninstituicao_cols = [col for col in df.columns if \"Instituicao\" in col]\n\n# 🔹 3. Criar uma lista com todas as instituições por artigo\ninstituicoes_lista = df[instituicao_cols].values.tolist()\n\n# 🔹 4. Criar a matriz de colaboração entre instituições\ncoocorrencia = {}\n\nfor instituicoes in instituicoes_lista:\n    unicas = list(set(filter(pd.notna, instituicoes)))  # Remover NaN e duplicatas\n    for i in range(len(unicas)):\n        for j in range(i + 1, len(unicas)):\n            par = tuple(sorted([unicas[i], unicas[j]]))\n            coocorrencia[par] = coocorrencia.get(par, 0) + 1\n\n# 🔹 5. Criar o grafo de colaboração entre instituições\nG = nx.Graph()\n\n# Adicionar arestas com pesos\nfor (inst1, inst2), peso in coocorrencia.items():\n    G.add_edge(inst1, inst2, weight=peso)\n\n# 🔹 6. Detectar clusters (comunidades) na rede\nclusters = community.greedy_modularity_communities(G)  # Método de detecção de comunidades\n\n# 🔹 7. Função para extrair sigla entre parênteses ou aplicar quebra de linha\ndef extrair_sigla_ou_quebrar(texto, max_chars=30):\n    \"\"\"Se houver sigla entre parênteses, retorna a sigla. Caso contrário, quebra o texto.\"\"\"\n    match = re.search(r\"\\((.*?)\\)\", texto)\n    if match:\n        return match.group(1)  # Retornar apenas a sigla\n    else:\n        palavras = texto.split()\n        linhas = []\n        linha_atual = \"\"\n\n        for palavra in palavras:\n            if len(linha_atual) + len(palavra) + 1 &gt; max_chars:\n                linhas.append(linha_atual)\n                linha_atual = palavra\n            else:\n                linha_atual += \" \" + palavra if linha_atual else palavra\n\n        if linha_atual:\n            linhas.append(linha_atual)\n\n        return \"\\n\".join(linhas)\n\n# 🔹 8. Criar um novo gráfico de rede com melhorias\nplt.figure(figsize=(14, 10))\n\n# Ajustar tamanho dos nós com base no grau de colaboração\nnode_size = [G.degree(n) * 30 for n in G.nodes()]\n\n# Ajustar espessura das arestas com base no peso da colaboração\nedge_width = [G[u][v]['weight'] * 0.2 for u, v in G.edges()]\n\n# Definir nova posição dos nós para melhor distribuição\npos = nx.spring_layout(G, k=0.30, seed=30)\n\n# 🔹 9. Melhorias na visualização\nnx.draw_networkx_edges(G, pos, alpha=0.2, width=edge_width, edge_color=\"#bb672d\")\nnx.draw_networkx_nodes(G, pos, node_size=node_size, alpha=0.65, node_color=\"#bdcc23\")\n\n# 🔹 10. Selecionar nós para exibir rótulos\ntop_n_labels = 20  # Exibir as 25 instituições mais conectadas\n\n# Adicionar 3 instituições de cada cluster para representatividade\nlabels = {}\ntop_nodes = sorted(G.degree, key=lambda x: x[1], reverse=True)[:top_n_labels]\n\n# Adicionar os 25 nós mais conectados\nfor node, _ in top_nodes:\n    labels[node] = extrair_sigla_ou_quebrar(node)\n\n# Adicionar representantes dos clusters menores\nfor c in clusters:\n    cluster_nodes = sorted(c, key=lambda x: G.degree(x), reverse=True)[:2]  # 3 principais de cada cluster\n    for node in cluster_nodes:\n        if node not in labels:  # Evitar duplicação de rótulos\n            labels[node] = extrair_sigla_ou_quebrar(node)\n\n# Criar rótulos como textos individuais (para ajuste automático)\ntexts = []\nfor node, text in labels.items():\n    x, y = pos[node]\n    texts.append(plt.text(x, y, text, fontsize=9, ha=\"center\", va=\"center\", color=\"black\"))\n\n# 🔹 11. Ajustar automaticamente os rótulos para evitar sobreposição\nadjust_text(texts, arrowprops=dict(arrowstyle=\"-\", color=\"gray\", lw=0.3))\n\n# 🔹 12. Exibição final\nplt.title(\"Rede de Colaboração \\nInstitucional\", fontsize=14)\nplt.savefig(\"/content/drive/MyDrive/bibliometria_cuba/rede_colab.png\", dpi=300, bbox_inches=\"tight\")\nplt.show()"
+  },
+  {
+    "objectID": "posts/16_rede_Cuba/rede_cuba.html#httpswww.ipea.gov.brctsptcentral-de-conteudoartigosartigos486-colaboracao-cientifica-o-caso-de-empresas-farmaceuticas-e-de-biotecnologia-cubanashighlightwyj0dwxpbyjdcolaboração-científica-como-estratégia-de-soberania-tecnológica",
+    "href": "posts/16_rede_Cuba/rede_cuba.html#httpswww.ipea.gov.brctsptcentral-de-conteudoartigosartigos486-colaboracao-cientifica-o-caso-de-empresas-farmaceuticas-e-de-biotecnologia-cubanashighlightwyj0dwxpbyjdcolaboração-científica-como-estratégia-de-soberania-tecnológica",
+    "title": "Rede de Colaboração Científica de Instituições Cubanas",
+    "section": "",
+    "text": "O gráfico abaixo representa a rede de colaboração institucional entre autores vinculados ao grupo BioCubaFarma, ao CECMED (órgão regulador cubano), e seus parceiros internacionais, com base em 219 artigos publicados entre 1997 e 2024.\nPost:"
   }
 ]

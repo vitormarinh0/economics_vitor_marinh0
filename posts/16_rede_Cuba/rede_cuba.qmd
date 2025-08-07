@@ -1,0 +1,167 @@
+---
+title: "Rede de Colaboração Científica de Instituições Cubanas"
+description: "Mapeamento da coprodução de artigos entre o grupo BioCubaFarma, o CECMED e instituições internacionais"
+date: 2025-08-06
+categories: [cooperação internacional, bibliometria, ciência e tecnologia, Cuba]
+image: BD88B4E4-5A24-4019-936D-873D03B03435.png
+format:
+  html:
+    page-layout: full
+    toc: true
+    toc-depth: 2
+    code-fold: true
+    code-summary: "Exibir código"
+---
+
+## Colaboração científica como estratégia de soberania tecnológica
+
+O gráfico abaixo representa a **rede de colaboração institucional** entre autores vinculados ao grupo **BioCubaFarma**, ao **CECMED** (órgão regulador cubano), e seus parceiros internacionais, com base em 219 artigos publicados entre 1997 e 2024.
+
+Post: <https://www.ipea.gov.br/cts/pt/central-de-conteudo/artigos/artigos/486-colaboracao-cientifica-o-caso-de-empresas-farmaceuticas-e-de-biotecnologia-cubanas?highlight=WyJ0dWxpbyJd> 
+
+![](rede_colab.png)
+
+------------------------------------------------------------------------
+
+## Metodologia
+
+A rede foi construída a partir de dados extraídos das bases **Web of Science** e **Scopus**, utilizando:
+
+-   Extração de coautorias por instituição
+-   Agrupamento por par de instituições com contagem de frequência
+-   Geração de um grafo não direcionado (`networkx`)
+-   Detecção de comunidades modulares (`greedy_modularity_communities`)
+-   Tamanhos dos nós e arestas ajustados conforme grau de colaboração
+
+------------------------------------------------------------------------
+
+## Destaques da rede
+
+-   A rede é **altamente concentrada em instituições cubanas**, com **BioCubaFarma**, **CIM**, **CIDEM**, **CIGB** e **CECMED** no núcleo.
+-   A **Universidade de Havana**, o **Instituto de Inmunología Molecular (CIM)** e o **Finlay (IFV)** aparecem como hubs centrais da ciência biomédica cubana.
+-   Instituições da **China**, **Espanha**, **Brasil** e **Estados Unidos** formam núcleos periféricos, conectados por publicações coassinadas.
+
+------------------------------------------------------------------------
+
+## Parcerias internacionais
+
+Segundo a análise:
+
+-   **China**: colaboração intensa com universidades (Sichuan, Shanghai, Nanjing) e empresas (Olisynn Biotech, PRIMA Drug), com foco em vacinas e biotecnologia.
+-   **Brasil**: 45 autores em 16 artigos, com destaque para a **UFRGS**, **UFBA**, **UFSC**, **ANVISA** e o **Hospital Albert Einstein**, atuando majoritariamente com o **CIDEM**.
+-   **Estados Unidos**: coautorias com universidades como **Arizona**, **Pittsburgh**, e o **Hospital de Cincinnati**, apesar do embargo.
+
+------------------------------------------------------------------------
+
+## Código base (Python)
+
+```{r, eval=FALSE}
+#!pip install openpyxl # install the module for reading excel files
+import pandas as pd
+import networkx as nx
+import matplotlib.pyplot as plt
+import re
+from adjustText import adjust_text  # Biblioteca para evitar sobreposição de textos
+from networkx.algorithms import community  # Para detectar clusters
+
+# 🔹 1. Carregar o DataFrame (substitua pelo nome do seu arquivo)
+df = pd.read_excel("/content/drive/MyDrive/bibliometria_cuba/Cuba_Autores_Inst_20.xlsx")  # Substitua pelo seu arquivo
+
+# 🔹 2. Filtrar apenas as colunas de instituições
+instituicao_cols = [col for col in df.columns if "Instituicao" in col]
+
+# 🔹 3. Criar uma lista com todas as instituições por artigo
+instituicoes_lista = df[instituicao_cols].values.tolist()
+
+# 🔹 4. Criar a matriz de colaboração entre instituições
+coocorrencia = {}
+
+for instituicoes in instituicoes_lista:
+    unicas = list(set(filter(pd.notna, instituicoes)))  # Remover NaN e duplicatas
+    for i in range(len(unicas)):
+        for j in range(i + 1, len(unicas)):
+            par = tuple(sorted([unicas[i], unicas[j]]))
+            coocorrencia[par] = coocorrencia.get(par, 0) + 1
+
+# 🔹 5. Criar o grafo de colaboração entre instituições
+G = nx.Graph()
+
+# Adicionar arestas com pesos
+for (inst1, inst2), peso in coocorrencia.items():
+    G.add_edge(inst1, inst2, weight=peso)
+
+# 🔹 6. Detectar clusters (comunidades) na rede
+clusters = community.greedy_modularity_communities(G)  # Método de detecção de comunidades
+
+# 🔹 7. Função para extrair sigla entre parênteses ou aplicar quebra de linha
+def extrair_sigla_ou_quebrar(texto, max_chars=30):
+    """Se houver sigla entre parênteses, retorna a sigla. Caso contrário, quebra o texto."""
+    match = re.search(r"\((.*?)\)", texto)
+    if match:
+        return match.group(1)  # Retornar apenas a sigla
+    else:
+        palavras = texto.split()
+        linhas = []
+        linha_atual = ""
+
+        for palavra in palavras:
+            if len(linha_atual) + len(palavra) + 1 > max_chars:
+                linhas.append(linha_atual)
+                linha_atual = palavra
+            else:
+                linha_atual += " " + palavra if linha_atual else palavra
+
+        if linha_atual:
+            linhas.append(linha_atual)
+
+        return "\n".join(linhas)
+
+# 🔹 8. Criar um novo gráfico de rede com melhorias
+plt.figure(figsize=(14, 10))
+
+# Ajustar tamanho dos nós com base no grau de colaboração
+node_size = [G.degree(n) * 30 for n in G.nodes()]
+
+# Ajustar espessura das arestas com base no peso da colaboração
+edge_width = [G[u][v]['weight'] * 0.2 for u, v in G.edges()]
+
+# Definir nova posição dos nós para melhor distribuição
+pos = nx.spring_layout(G, k=0.30, seed=30)
+
+# 🔹 9. Melhorias na visualização
+nx.draw_networkx_edges(G, pos, alpha=0.2, width=edge_width, edge_color="#bb672d")
+nx.draw_networkx_nodes(G, pos, node_size=node_size, alpha=0.65, node_color="#bdcc23")
+
+# 🔹 10. Selecionar nós para exibir rótulos
+top_n_labels = 20  # Exibir as 25 instituições mais conectadas
+
+# Adicionar 3 instituições de cada cluster para representatividade
+labels = {}
+top_nodes = sorted(G.degree, key=lambda x: x[1], reverse=True)[:top_n_labels]
+
+# Adicionar os 25 nós mais conectados
+for node, _ in top_nodes:
+    labels[node] = extrair_sigla_ou_quebrar(node)
+
+# Adicionar representantes dos clusters menores
+for c in clusters:
+    cluster_nodes = sorted(c, key=lambda x: G.degree(x), reverse=True)[:2]  # 3 principais de cada cluster
+    for node in cluster_nodes:
+        if node not in labels:  # Evitar duplicação de rótulos
+            labels[node] = extrair_sigla_ou_quebrar(node)
+
+# Criar rótulos como textos individuais (para ajuste automático)
+texts = []
+for node, text in labels.items():
+    x, y = pos[node]
+    texts.append(plt.text(x, y, text, fontsize=9, ha="center", va="center", color="black"))
+
+# 🔹 11. Ajustar automaticamente os rótulos para evitar sobreposição
+adjust_text(texts, arrowprops=dict(arrowstyle="-", color="gray", lw=0.3))
+
+# 🔹 12. Exibição final
+plt.title("Rede de Colaboração \nInstitucional", fontsize=14)
+plt.savefig("/content/drive/MyDrive/bibliometria_cuba/rede_colab.png", dpi=300, bbox_inches="tight")
+plt.show()
+
+```

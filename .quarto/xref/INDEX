@@ -73,5 +73,11 @@
   },
   "posts/14_quilombos/mapa_quilombos.qmd": {
     "mapa_quilombos.html": "c27b5f91"
+  },
+  "posts/15_area_plantada/producao_cerrado.qmd": {
+    "producao_cerrado.html": "5a375d43"
+  },
+  "posts/16_rede_Cuba/rede_cuba.qmd": {
+    "rede_cuba.html": "2262a382"
   }
 }
