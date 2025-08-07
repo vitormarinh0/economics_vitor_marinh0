@@ -1,0 +1,140 @@
+---
+title: "Acesso à Internet nas Escolas do Cerrado: 2015 vs 2023"
+description: "Comparativo espacial do percentual de escolas com acesso à internet no bioma Cerrado em 2015 e 2023"
+date: 2025-08-06
+categories: [educação, infraestrutura, Cerrado, inclusão digital]
+image: 3_mapa_internet_escolas_cerrado_2015_2023.png
+format:
+  html:
+    page-layout: full
+    toc: true
+    toc-depth: 2
+    code-fold: true
+    code-summary: "Exibir código"
+---
+
+## Conectividade educacional no Cerrado
+
+A presença de internet nas escolas é uma condição fundamental para a promoção da **inclusão digital** e para o desenvolvimento de competências do século XXI. Utilizando dados agregados por município, este post apresenta um **comparativo espacial da proporção de escolas com acesso à internet no bioma Cerrado**, entre os anos de **2015** e **2023**.
+
+![](3_mapa_internet_escolas_cerrado_2015_2023.png)
+
+---
+
+### Principais avanços
+
+- Em **2015**, a maioria dos municípios apresentava **menos de 50%** das escolas com acesso à internet, com **vários vazios de conectividade** especialmente no Maranhão, Tocantins, norte de Minas Gerais e oeste da Bahia.
+- Em **2023**, há um avanço expressivo: **grande parte dos municípios supera 75%** de cobertura, com destaque para Mato Grosso, Goiás e o Distrito Federal.
+- Apesar disso, persistem **bolsões de exclusão** digital no norte do Cerrado, principalmente em áreas rurais e de fronteira agrícola.
+
+---
+
+### Código do mapa (R)
+```{r, eval=FALSE}
+
+library(ggplot2)
+library(ggspatial)
+library(shadowtext)
+library(MetBrewer)
+library(gridExtra)
+
+# Garantir que ambos os lados da comparação estão como character de 6 dígitos
+# Certifique-se que a coluna esteja limpa nas duas bases
+Mun_Cerrado_MDR <- Mun_Cerrado_MDR %>%
+  mutate(code_muni6 = as.character(code_muni6))
+
+mun_educ_sf <- mun_educ_sf %>%
+  mutate(code_muni6 = as.character(code_muni6))
+
+# Filtrar municípios do Cerrado corretamente
+mun_educ_cerrado_sf <- mun_educ_sf %>%
+  filter(code_muni6 %in% Mun_Cerrado_MDR$code_muni6)
+# Paleta
+paleta_internet <- MetBrewer::met.brewer("Hokusai1", 7)
+
+# Mapa A - 2015
+mapa_internet_2015 <- ggplot() +
+  geom_sf(data = mun_educ_cerrado_sf, aes(fill = educ2_2015),
+          color = "black", linewidth = 0.2) +
+  geom_sf(data = ufs_cerrado, fill = NA, color = "gray30", linewidth = 0.6) +
+  geom_sf(data = ufs_cerrado, fill = NA, color = "black", linewidth = 0.8) +
+  geom_shadowtext(
+    data = ufs_cerrado,
+    aes(x = lon, y = lat, label = abbrev_state),
+    color = "white", bg.color = "black", size = 2.5, fontface = "bold"
+  ) +
+  annotation_scale(location = "bl", width_hint = 0.25) +
+  annotation_north_arrow(
+    location = "tl", which_north = "true",
+    style = north_arrow_fancy_orienteering,
+    height = unit(1, "cm"), width = unit(1, "cm")
+  ) +
+  scale_fill_gradientn(
+    colors = paleta_internet,
+    limits = c(0, 100),
+    name = "Escolas com \nAcesso à Internet (%)",
+    na.value = "white"
+  ) +
+  labs(title = "A.2015", x = NULL, y = NULL) +
+  theme_minimal(base_size = 12) +
+  theme(
+    plot.title = element_text(hjust = 0.5, face = "bold", size = 14),
+    legend.position = "right",
+    panel.grid = element_blank(),
+    axis.text = element_blank(),
+    axis.ticks = element_blank()
+  )
+
+
+mapa_internet_2015
+
+# Mapa B - 2023
+mapa_internet_2023 <- ggplot() +
+  geom_sf(data = mun_educ_cerrado_sf, aes(fill = educ2_2023),
+          color = "black", linewidth = 0.2) +
+  geom_sf(data = ufs_cerrado, fill = NA, color = "gray30", linewidth = 0.6) +
+  geom_sf(data = ufs_cerrado, fill = NA, color = "black", linewidth = 0.8) +
+  geom_shadowtext(
+    data = ufs_cerrado,
+    aes(x = lon, y = lat, label = abbrev_state),
+    color = "white", bg.color = "black", size = 2.5, fontface = "bold"
+  ) +
+  annotation_scale(location = "bl", width_hint = 0.25) +
+  annotation_north_arrow(
+    location = "tl", which_north = "true",
+    style = north_arrow_fancy_orienteering,
+    height = unit(1, "cm"), width = unit(1, "cm")
+  ) +
+  scale_fill_gradientn(
+    colors = paleta_internet,
+    limits = c(0, 100),
+    name = "Escolas com \nAcesso à Internet (%)",
+    na.value = "white"
+  ) +
+  labs(title = "B.2023", x = NULL, y = NULL) +
+  theme_minimal(base_size = 12) +
+  theme(
+    plot.title = element_text(hjust = 0.5, face = "bold", size = 14),
+    legend.position = "right",
+    panel.grid = element_blank(),
+    axis.text = element_blank(),
+    axis.ticks = element_blank()
+  )
+
+# Juntar os dois mapas verticalmente
+p_final_internet <- grid.arrange(mapa_internet_2015,
+                                 mapa_internet_2023, ncol = 1)
+
+
+# 5. Exportar
+ggsave(
+  filename = "graficos_ponderados/3_mapa_internet_escolas_cerrado_2015_2023.png",
+  plot = gridExtra::grid.arrange(mapa_internet_2015, mapa_internet_2023, ncol = 1),
+  width = 8,
+  height = 10,
+  dpi = 300,
+  bg = "white"
+)
+
+```
+

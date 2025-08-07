@@ -1,0 +1,100 @@
+---
+title: "Comunidades Quilombolas no Brasil: presença, resistência e território"
+description: "Distribuição espacial das comunidades quilombolas por município brasileiro, segundo número de localidades reconhecidas pelo CENSO (2022)"
+date: 2025-08-06
+categories: [territórios tradicionais, desigualdade racial, quilombolas, justiça social]
+image: mapa_comunidades_quilombolas.png
+format:
+  html:
+    page-layout: full
+    toc: true
+    toc-depth: 2
+    code-fold: true
+    code-summary: "Exibir código"
+---
+
+## Quilombos: territórios de resistência
+
+As comunidades quilombolas são expressões vivas da resistência negra no Brasil. Esses territórios, fundados por pessoas negras em fuga da escravidão, se tornaram espaços de construção coletiva, de preservação da cultura afro-brasileira e de enfrentamento das desigualdades raciais e territoriais.
+
+O mapa abaixo mostra a **quantidade de comunidades quilombolas por município**, agrupadas por faixas de concentração:
+
+![](mapa_comunidades_quilombolas.png)
+
+---
+
+
+- Forte presença nos estados do Maranhão, Bahia, Pará, Minas Gerais e Goiás
+- Concentrações significativas também em São Paulo, Rio de Janeiro e Rio Grande do Sul
+- Municípios com **mais de 100 comunidades** (bolhas roxas e marrons) localizados majoritariamente no **Maranhão e Pará**, com destaque para áreas rurais e fronteiras agrárias
+
+
+---
+
+## Código em Python (matplotlib + geopandas)
+
+```{R, eval=FALSE}
+import pandas as pd
+import geopandas as gpd
+import matplotlib.pyplot as plt
+
+# 1. Corrigir as colunas de coordenadas
+quilombos_grouped['Lat_d'] = pd.to_numeric(quilombos_grouped['Lat_d'], errors='coerce')
+quilombos_grouped['Long_d'] = pd.to_numeric(quilombos_grouped['Long_d'], errors='coerce')
+
+# Remover linhas com valores inválidos de coordenadas
+quilombos_grouped = quilombos_grouped.dropna(subset=['Lat_d', 'Long_d'])
+
+# 2. Criar a coluna 'faixa' com base em 'num_localidades'
+quilombos_grouped['num_localidades'] = pd.to_numeric(quilombos_grouped['num_localidades'], errors='coerce')
+bins = [0, 6, 18, 36, 72, 122, float('inf')]  # Limites das faixas
+labels = ['1-6', '7-18', '19-36', '37-72', '73-122', '123+']  # Rótulos das faixas
+quilombos_grouped['faixa'] = pd.cut(quilombos_grouped['num_localidades'], bins=bins, labels=labels, right=True)
+
+# Verificar o resultado
+print(quilombos_grouped[['num_localidades', 'faixa', 'Lat_d', 'Long_d']].head())
+
+# 3. Criar o dicionário de cores
+faixa_colors = {
+    '1-6': '#ff7f0e',    # Laranja
+    '7-18': '#1f77b4',   # Azul
+    '19-36': '#2ca02c',  # Verde
+    '37-72': '#d62728',  # Vermelho
+    '73-122': '#9467bd', # Roxo
+    '123+': '#8c564b'    # Marrom
+}
+
+# 4. Carregar o GeoDataFrame de estados (mapa base)
+ufs = read_state(year=2020)
+
+# 5. Criar o mapa
+fig, ax = plt.subplots(1, 1, figsize=(12, 10))
+ufs.plot(ax=ax, color="#f2e0c9", edgecolor="gray")
+
+# Adicionar os pontos ao mapa
+for faixa, color in faixa_colors.items():
+    subset = quilombos_grouped[quilombos_grouped['faixa'] == faixa]
+    size = subset['num_localidades'] * 6  # Multiplicador ajustado para visualização proporcional
+    ax.scatter(
+        subset['Long_d'],
+        subset['Lat_d'],
+        color=color,
+        label=faixa,
+        alpha=0.8,
+        s=size  # Aplicar tamanho baseado diretamente no número de localidades
+    )
+
+# Adicionar legenda
+ax.legend(title="Faixa", loc='lower left', fontsize=10)
+
+# Configurações do mapa
+ax.set_title("Comunidades Quilombolas por Município", fontsize=16, fontweight="bold")
+ax.set_axis_off()
+
+# Salvar ou exibir o mapa
+plt.tight_layout()
+plt.savefig("mapa_comunidades_quilombolas.png", dpi=320)
+plt.show()
+
+```
+

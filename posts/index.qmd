@@ -1,8 +1,6 @@
 ---
-title: "Blog"
+title: ""
 page-layout: full
-title-block-banner: true
-title-block-banner-image: ../img/banner_amz.jpg
 listing:
   contents: .
   sort: "date desc"

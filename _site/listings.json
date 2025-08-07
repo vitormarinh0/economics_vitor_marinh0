@@ -2,17 +2,22 @@
   {
     "listing": "/posts/index.html",
     "items": [
-      "/posts/populacao_negra.html",
-      "/posts/bioeconomia.html"
+      "/posts/5_plataformas_transportes/mapa_plataformas.html",
+      "/posts/3_lideracan_cientifica/ipea_lid_grupos.html",
+      "/posts/4_pop_negra_municipios/populacao_negra.html",
+      "/posts/2_twin_transition/twin_transition.html",
+      "/posts/1_bioeconomia/bioeconomia.html"
     ]
   },
   {
     "listing": "/index.html",
     "items": [
       "/posts/index.html",
-      "/posts/ipea_lid_grupos.html",
-      "/posts/populacao_negra.html",
-      "/posts/bioeconomia.html"
+      "/posts/5_plataformas_transportes/mapa_plataformas.html",
+      "/posts/3_lideracan_cientifica/ipea_lid_grupos.html",
+      "/posts/4_pop_negra_municipios/populacao_negra.html",
+      "/posts/2_twin_transition/twin_transition.html",
+      "/posts/1_bioeconomia/bioeconomia.html"
     ]
   }
 ]

@@ -1,0 +1,63 @@
+---
+title: "Raça e Gênero na Liderança Científica Brasileira"
+description: "Evolução da composição racial de líderes de grupos de pesquisa no Brasil entre 2000 e 2023"
+date: 2025-08-06
+categories: [desigualdade racial, ciência e tecnologia, liderança acadêmica]
+image: grafico_horizontal_transparente.png
+format:
+  html:
+    page-layout: full
+    toc: true
+    toc-depth: 2
+    code-fold: true
+    code-summary: "Exibir código"
+---
+
+## Representatividade na ciência: quem lidera os grupos de pesquisa?
+
+A produção científica no Brasil é altamente estruturada em torno de grupos de pesquisa certificados pelo CNPq, registrados na **Plataforma Lattes**. Analisando os dados dos censos de 2000, 2010 e 2023, é possível observar **mudanças na composição racial dos(as) líderes desses grupos**, com destaque para o recorte de gênero.
+
+Abaixo, apresentamos a **distribuição percentual por raça/cor** entre **líderes de grupos de pesquisa**, separados por **gênero**, ao longo das últimas duas décadas:
+
+![](grafico_horizontal_transparente.png)
+
+---
+
+### Principais destaques
+
+- Entre **mulheres**, a participação de pessoas negras (pretas + pardas) **aumentou de 0,9% (2000) para 24,1% (2023)**.
+- Entre **homens**, a proporção passou de **1,5% (2000) para 26,7% (2023)**.
+- Ainda assim, **mais de 70% das lideranças em 2023 são brancas**, em ambos os gêneros.
+- A presença de pessoas **amarelas** e **pretas** isoladamente é residual — os dados foram agrupados na categoria “Negro”.
+
+Esses resultados apontam para **um lento processo de inclusão racial** na liderança científica, com avanços importantes, mas ainda marcados pela **sub-representação de pessoas negras** em posições de poder na ciência brasileira.
+
+---
+
+## Código (R)
+
+```{r, eval=FALSE}
+# Pré-processamento e gráfico
+df_lideres <- df %>%
+  filter(LIDER_GRUPO_BIN == 1 & 
+         !RACA_COR_PARTICIPANTE %in% c("Não informado", "Não Informado", "Não desejo declarar", "NA", "Indígena") & 
+         SEXO_PARTICIPANTE %in% c("Feminino", "Masculino") & 
+         ANO_DO_CENSO %in% c(2000, 2010, 2023)) %>%
+  mutate(RACA_COR_PARTICIPANTE = ifelse(RACA_COR_PARTICIPANTE %in% c("Preta", "Parda"), "Negro", RACA_COR_PARTICIPANTE))
+
+percentuais <- df_lideres %>%
+  group_by(ANO_DO_CENSO, SEXO_PARTICIPANTE, RACA_COR_PARTICIPANTE) %>%
+  summarise(count = n()) %>%
+  mutate(percentage = count / sum(count) * 100)
+
+ggplot(percentuais, aes(x = as.factor(ANO_DO_CENSO), y = percentage, fill = RACA_COR_PARTICIPANTE)) +
+  geom_bar(stat = "identity", position = "stack", width = 0.5) +
+  geom_text(data = subset(percentuais, !RACA_COR_PARTICIPANTE %in% c(NA, "Amarela")), 
+            aes(label = sprintf("%.1f%%", percentage)), 
+            position = position_stack(vjust = 0.8), hjust = 1.1, size = 3, color = "black") +
+  facet_wrap(~ SEXO_PARTICIPANTE, scales = "free_y") +
+  scale_fill_brewer(palette = "Set1") +
+  coord_flip() +
+  theme_minimal()
+```
+

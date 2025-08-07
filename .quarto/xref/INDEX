@@ -46,5 +46,32 @@
   },
   "posts/3_lideracan_cientifica/ipea_lid_grupos.qmd": {
     "ipea_lid_grupos.html": "bad0cd01"
+  },
+  "posts/6_area_protegida/APAs.qmd": {
+    "APAs.html": "98d1d4a1"
+  },
+  "posts/7_preco_apartamentos/preco_m2.qmd": {
+    "preco_m2.html": "73f7e271"
+  },
+  "posts/8_empresas_plataformas/empresas_plataformas.qmd": {
+    "empresas_plataformas.html": "1225b94e"
+  },
+  "posts/9_grupos_pesquisa/lideres_gp_pesquisa.qmd": {
+    "lideres_gp_pesquisa.html": "bc44d866"
+  },
+  "posts/10_cerrado_internet/acesso_internet.qmd": {
+    "acesso_internet.html": "b7ece7b2"
+  },
+  "posts/11_mapas_bivariados/mapas_bivariados.qmd": {
+    "mapas_bivariados.html": "fe78bef8"
+  },
+  "posts/12_destino_lixo_PA/coleta_lixo.qmd": {
+    "coleta_lixo.html": "0aefd082"
+  },
+  "posts/13_emissoes_gee_Amz/gee_amz.qmd": {
+    "gee_amz.html": "abd2e210"
+  },
+  "posts/14_quilombos/mapa_quilombos.qmd": {
+    "mapa_quilombos.html": "c27b5f91"
   }
 }

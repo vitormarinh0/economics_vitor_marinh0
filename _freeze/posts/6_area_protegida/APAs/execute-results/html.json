@@ -1,0 +1,15 @@
+{
+  "hash": "295e5e42a1a51de37dc81863b9cf34ae",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Áreas protegidas no Brasil: expansão e distribuição\"\ndescription: \"Análise da expansão das unidades de conservação e da preservação por município entre 2010 e 2024\"\ndate: 2025-08-06\ncategories: [sustentabilidade, preservação ambiental, mapas]\nimage: mapa_crescimento_uc_2010_2024.png\nformat:\n  html:\n    page-layout: full\n    toc: true\n    toc-depth: 2\n    code-fold: true\n    code-summary: \"Exibir código\"\n---\n\nAo longo da última década, o Brasil ampliou significativamente a área sob proteção ambiental, especialmente na região amazônica. O mapa abaixo apresenta o **crescimento da área protegida entre 2010 e 2024**, em hectares, considerando a criação ou ampliação de Unidades de Conservação (UCs) por município.\n\n## [![Fonte: Elaboração Própria a partir de dados do CNUC](mapa_crescimento_uc_2010_2024.png)](https://cnuc.mma.gov.br/powerbi)Expansão das áreas protegidas\n\nA variação vai de municípios que **não tiveram expansão** até aqueles que **incorporaram mais de 100 mil hectares de novas áreas protegidas**. O destaque vai para estados como **Amazonas**, **Pará**, **Rondônia** e **Mato Grosso**, com grandes blocos de conservação estabelecidos ou expandidos no período.\n\n## Preservação proporcional por município\n\nAlém da área absoluta, é relevante observar a **proporção do território municipal que está efetivamente preservado**. Para isso, utilizamos dados agregados por município e classificamos a proporção preservada em faixas:\n\n![](mapa_preservacao_municipios.png)\n\n\n::: {.cell}\n\n```{.r .cell-code}\n\\# Classificação por faixa percentual\nmun_preserv \\<- mun_preserv %\\>%\nmutate(faixa_preserv = cut(\nprop_preservada,\nbreaks = c(0, 0.0001, 0.01, 0.05, 0.1, 1),\nlabels = c(\"0%\", \"até 1%\", \"1–5%\", \"5–10%\", \"\\>10%\"),\ninclude.lowest = TRUE\n))\n```\n:::\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# Visualização da proporção de área preservada\nggplot() +\n  geom_sf(data = mun_preserv, aes(fill = faixa_preserv), color = NA) +\n  geom_sf(data = read_state(year = 2020), fill = NA, color = \"gray30\", size = 0.3) +\n  scale_fill_manual(\n    values = MetBrewer::met.brewer(\"Derain\", 5),\n    name = \"Prop.Área preservação\"\n  ) +\n  annotation_scale(location = \"bl\", width_hint = 0.3) +\n  annotation_north_arrow(location = \"bl\", which_north = \"true\",\n                         style = north_arrow_fancy_orienteering) +\n  theme_minimal(base_size = 12) +\n  theme(\n    legend.position = \"right\",\n    plot.title = element_text(face = \"bold\", size = 14),\n    plot.subtitle = element_text(size = 12),\n    axis.title = element_blank(),\n    axis.text = element_blank(),\n    axis.ticks = element_blank()\n  )\n```\n:::\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

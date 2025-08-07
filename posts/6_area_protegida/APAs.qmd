@@ -1,0 +1,61 @@
+---
+title: "Áreas protegidas no Brasil: expansão e distribuição"
+description: "Análise da expansão das unidades de conservação e da preservação por município entre 2010 e 2024"
+date: 2025-08-06
+categories: [sustentabilidade, preservação ambiental, mapas]
+image: mapa_crescimento_uc_2010_2024.png
+format:
+  html:
+    page-layout: full
+    toc: true
+    toc-depth: 2
+    code-fold: true
+    code-summary: "Exibir código"
+---
+
+Ao longo da última década, o Brasil ampliou significativamente a área sob proteção ambiental, especialmente na região amazônica. O mapa abaixo apresenta o **crescimento da área protegida entre 2010 e 2024**, em hectares, considerando a criação ou ampliação de Unidades de Conservação (UCs) por município.
+
+## [![Fonte: Elaboração Própria a partir de dados do CNUC](mapa_crescimento_uc_2010_2024.png)](https://cnuc.mma.gov.br/powerbi)Expansão das áreas protegidas
+
+A variação vai de municípios que **não tiveram expansão** até aqueles que **incorporaram mais de 100 mil hectares de novas áreas protegidas**. O destaque vai para estados como **Amazonas**, **Pará**, **Rondônia** e **Mato Grosso**, com grandes blocos de conservação estabelecidos ou expandidos no período.
+
+## Preservação proporcional por município
+
+Além da área absoluta, é relevante observar a **proporção do território municipal que está efetivamente preservado**. Para isso, utilizamos dados agregados por município e classificamos a proporção preservada em faixas:
+
+![](mapa_preservacao_municipios.png)
+
+```{r, eval=FALSE}
+\# Classificação por faixa percentual
+mun_preserv \<- mun_preserv %\>%
+mutate(faixa_preserv = cut(
+prop_preservada,
+breaks = c(0, 0.0001, 0.01, 0.05, 0.1, 1),
+labels = c("0%", "até 1%", "1–5%", "5–10%", "\>10%"),
+include.lowest = TRUE
+))
+
+```
+
+```{r, eval=FALSE}
+# Visualização da proporção de área preservada
+ggplot() +
+  geom_sf(data = mun_preserv, aes(fill = faixa_preserv), color = NA) +
+  geom_sf(data = read_state(year = 2020), fill = NA, color = "gray30", size = 0.3) +
+  scale_fill_manual(
+    values = MetBrewer::met.brewer("Derain", 5),
+    name = "Prop.Área preservação"
+  ) +
+  annotation_scale(location = "bl", width_hint = 0.3) +
+  annotation_north_arrow(location = "bl", which_north = "true",
+                         style = north_arrow_fancy_orienteering) +
+  theme_minimal(base_size = 12) +
+  theme(
+    legend.position = "right",
+    plot.title = element_text(face = "bold", size = 14),
+    plot.subtitle = element_text(size = 12),
+    axis.title = element_blank(),
+    axis.text = element_blank(),
+    axis.ticks = element_blank()
+  )
+```

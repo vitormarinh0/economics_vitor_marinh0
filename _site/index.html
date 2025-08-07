@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Vitor Marinho">
 
-<title>Mundo Marinho</title>
+<title>Data-viz por Vitor Marinho</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,18 +31,15 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-c1fac2584b48ed01fb6e278e36375074.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-a14e3238c51140e99ccc48519b6ed9ce.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -69,95 +67,19 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-<style>
-
-      .quarto-title-block .quarto-title-banner h1,
-      .quarto-title-block .quarto-title-banner h2,
-      .quarto-title-block .quarto-title-banner h3,
-      .quarto-title-block .quarto-title-banner h4,
-      .quarto-title-block .quarto-title-banner h5,
-      .quarto-title-block .quarto-title-banner h6
-      {
-        color: #0d0d0d;
-      }
-
-      .quarto-title-block .quarto-title-banner {
-        color: #0d0d0d;
-      }
-</style>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="nav-fixed fullcontent quarto-light">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+  <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">Mundo Marinho</span>
+    <span class="navbar-title">Data-viz por Vitor Marinho</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -171,12 +93,12 @@ window.Quarto = {
 <span class="menu-text">Início</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
-<span class="menu-text">Sobre</span></a>
+    <a class="nav-link" href="./posts/index.html"> 
+<span class="menu-text">Publicações</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./posts/"> 
-<span class="menu-text">Blog</span></a>
+    <a class="nav-link" href="./about.html"> 
+<span class="menu-text">Sobre</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -186,192 +108,61 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page-left">
-      <h1 class="title">Mundo Marinho</h1>
-                      </div>
-  </div>
-    
-  
-  <div class="quarto-title-meta column-page-left">
-
-      
-    
-      
-    </div>
-    
-  
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#bem-vindo-ao-blog" id="toc-bem-vindo-ao-blog" class="nav-link active" data-scroll-target="#bem-vindo-ao-blog">Bem-vindo ao Blog</a>
-  <ul class="collapse">
-  <li><a href="#últimas-publicações" id="toc-últimas-publicações" class="nav-link" data-scroll-target="#últimas-publicações">Últimas publicações</a></li>
-  </ul></li>
-  </ul>
-</nav>
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(4)</span></div><div class="category" data-category="YW1heiVDMyVCNG5pYQ==">amazônia <span class="quarto-category-count">(1)</span></div><div class="category" data-category="YmlvZWNvbm9taWE=">bioeconomia <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y2klQzMlQUFuY2lh">ciência <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZGF0YXZpeg==">dataviz <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZGVtb2dyYWZpYQ==">demografia <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZGVzaWd1YWxkYWRlcw==">desigualdades <span class="quarto-category-count">(1)</span></div><div class="category" data-category="SXBlYQ==">Ipea <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bWFwYXM=">mapas <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cGVzcXVpc2E=">pesquisa <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Ug==">R <span class="quarto-category-count">(1)</span></div><div class="category" data-category="c3VzdGVudGFiaWxpZGFkZQ==">sustentabilidade <span class="quarto-category-count">(1)</span></div></div></div>
+    
 <!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
-
-
-
-
-
-<section id="bem-vindo-ao-blog" class="level1">
-<h1>Bem-vindo ao Blog</h1>
-<p>Sou <strong>Vitor Marinho</strong>, economista e pesquisador na interseção entre desenvolvimento regional, bioeconomia e sustentabilidade. Neste espaço, compartilho meus projetos, visualizações e reflexões.</p>
-<div style="margin-top: 1em; font-size: 1.1em;">
-<p><a href="https://github.com/vitormarinh0" target="_blank"> <i class="bi bi-github"></i> GitHub </a> | <a href="https://www.linkedin.com/in/vitor-marinho-a4b742242" target="_blank"> <i class="bi bi-linkedin"></i> LinkedIn </a></p>
+<div class="quarto-about-solana column-body">
+  <div class="about-entity">
+    <div class="entity-contents">
+      <header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<p class="subtitle lead">Pesquisador em desenvolvimento regional, bioeconomia e sustentabilidade</p>
+</div>
+<div class="quarto-title-meta">
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Vitor Marinho </p>
+          </div>
+  </div>
+  </div>
+</header> <div class="about-links">
+  <a href="https://www.linkedin.com/in/vitor-marinho-a4b742242" class="about-link" rel="" target="">
+    <i class="bi bi-linkedin"></i>
+     <span class="about-link-text">LinkedIn</span>
+  </a>
+  <a href="https://github.com/vitormarinh0" class="about-link" rel="" target="">
+    <i class="bi bi-github"></i>
+     <span class="about-link-text">GitHub</span>
+  </a>
+  <a href="http://lattes.cnpq.br/7205965341395241" class="about-link" rel="" target="">
+    <i class="bi bi-file-earmark-person"></i>
+     <span class="about-link-text">Currículo Lattes</span>
+  </a>
+</div>
+      <div class="about-contents"><main class="content" id="quarto-document-content">
+<div style="text-align: center; margin-top: 2em;">
+<img src="img/foto_blog.jpeg" alt="Vitor Marinho" style="width: 160px; height: 160px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 8px rgba(0,0,0,0.15);">
+<h1 style="margin-top: 1em; margin-bottom: 0.2em;">
+Vitor Marinho
+</h1>
+<p style="font-size: 1.1em; color: #555;">
+Pesquisador em desenvolvimento regional, bioeconomia e sustentabilidade
+</p>
 </div>
 <hr>
-<section id="últimas-publicações" class="level2">
-<h2 class="anchored" data-anchor-id="últimas-publicações">Últimas publicações</h2>
+<p>Sou pesquisador apaixonado por entender a relação entre <strong>economia</strong>, <strong>meio ambiente</strong> e <strong>território</strong>, com foco em políticas públicas que promovam <strong>justiça climática</strong>, <strong>inovação verde</strong> e <strong>desenvolvimento sustentável</strong> no Brasil. Trabalho com dados, mapas e modelos econômicos aplicados.</p>
 
 
-
-</section>
-</section>
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-file-modified-sort="1754000343040" data-listing-reading-time-sort="1" data-listing-word-count-sort="20">
-<div class="thumbnail"><a href="./posts/index.html" class="no-external">
-
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/index.html" class="no-external">Blog</a>
-</h3>
-<div class="delink listing-description"><a href="./posts/index.html" class="no-external">
-Bem-vindo ao meu blog! Aqui compartilho análises, visualizações e reflexões sobre temas como sustentabilidade, desigualdade racial, bioeconomia e políticas públicas.
-</a></div>
+</main></div>
+    </div>
+  </div>
 </div>
-<div class="metadata">
-<a href="./posts/index.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="Y2klQzMlQUFuY2lhJTJDZGVzaWd1YWxkYWRlcyUyQ3Blc3F1aXNhJTJDSXBlYQ==" data-listing-date-sort="1754017200000" data-listing-file-modified-sort="1754001931832" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="394">
-<div class="thumbnail"><a href="./posts/ipea_lid_grupos.html" class="no-external">
-
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/ipea_lid_grupos.html" class="no-external">Mais lideranças negras na ciência brasileira</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('Y2klQzMlQUFuY2lh'); return false;">ciência</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('ZGVzaWd1YWxkYWRlcw=='); return false;">desigualdades</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('cGVzcXVpc2E='); return false;">pesquisa</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('SXBlYQ=='); return false;">Ipea</div>
-
-</div>
-<div class="delink listing-description"><a href="./posts/ipea_lid_grupos.html" class="no-external">
-<p>Análise do aumento da presença de pretos e pardos na liderança de grupos de pesquisa no Brasil com base no Diretório de Grupos de Pesquisa (CNPq).</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/ipea_lid_grupos.html" class="no-external">
-<div class="listing-date">
-Aug 1, 2025
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="ZGVtb2dyYWZpYSUyQ21hcGFzJTJDZGF0YXZpeiUyQ1I=" data-listing-date-sort="1753930800000" data-listing-file-modified-sort="1753999061747" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="433">
-<div class="thumbnail"><a href="./posts/populacao_negra.html" class="no-external">
-
-<p class="card-img-top"><img src="img/mapa_proporcao_negros.png"  class="thumbnail-image card-img"/></p>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/populacao_negra.html" class="no-external">Distribuição Espacial da População Negra no Brasil</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('ZGVtb2dyYWZpYQ=='); return false;">demografia</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('bWFwYXM='); return false;">mapas</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('ZGF0YXZpeg=='); return false;">dataviz</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Ug=='); return false;">R</div>
-
-</div>
-<div class="delink listing-description"><a href="./posts/populacao_negra.html" class="no-external">
-<p>Mapeamento da proporção da população negra por região intermediária com base no Censo 2022.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/populacao_negra.html" class="no-external">
-<div class="listing-date">
-Jul 31, 2025
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-categories="YmlvZWNvbm9taWElMkNhbWF6JUMzJUI0bmlhJTJDc3VzdGVudGFiaWxpZGFkZQ==" data-listing-date-sort="1705287600000" data-listing-file-modified-sort="1753995864302" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="19">
-<div class="thumbnail"><a href="./posts/bioeconomia.html" class="no-external">
-
-<p class="card-img-top"><img src="posts/images/uso_terra.png"  class="thumbnail-image card-img"/></p>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/bioeconomia.html" class="no-external">Modelagem para Bioeconomia na Amazônia</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('YmlvZWNvbm9taWE='); return false;">bioeconomia</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('YW1heiVDMyVCNG5pYQ=='); return false;">amazônia</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('c3VzdGVudGFiaWxpZGFkZQ=='); return false;">sustentabilidade</div>
-
-</div>
-<div class="delink listing-description"><a href="./posts/bioeconomia.html" class="no-external">
-A bioeconomia oferece caminhos promissores para o desenvolvimento sustentável da Amazônia, combinando conservação ambiental e geração de renda local.
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/bioeconomia.html" class="no-external">
-<div class="listing-date">
-Jan 15, 2024
-</div>
-<div class="listing-author">
-Vitor Marinho
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+ <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
-    const icon = "";
-    const anchorJS = new window.AnchorJS();
-    anchorJS.options = {
-      placement: 'right',
-      icon: icon
-    };
-    anchorJS.add('.anchored');
     const isCodeAnnotation = (el) => {
       for (const clz of el.classList) {
         if (clz.startsWith('code-annotation-')) {                     
@@ -763,32 +554,6 @@ Vitor Marinho
   });
   </script>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
-    <div class="nav-footer-left">
-<p>© 2025 Vitor Marinho</p>
-</div>   
-    <div class="nav-footer-center">
-      &nbsp;
-    </div>
-    <div class="nav-footer-right">
-      <ul class="footer-items list-unstyled">
-    <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/vitormarinh0">
-      <i class="bi bi-github" role="img">
-</i> 
-    </a>
-  </li>  
-    <li class="nav-item compact">
-    <a class="nav-link" href="https://www.linkedin.com/in/vitor-marinho-a4b742242">
-      <i class="bi bi-linkedin" role="img">
-</i> 
-    </a>
-  </li>  
-</ul>
-    </div>
-  </div>
-</footer>
 
 
 

@@ -1,31 +1,24 @@
 project:
   type: website
-  output-dir: docs
+
 website:
-  title: "Mundo Marinho"
+  title: "Data-viz por Vitor Marinho"
   navbar:
     left:
       - text: Início
-        href: index.qmd
+        file: index.qmd
+      - text: Publicações
+        file: posts/index.qmd
       - text: Sobre
-        href: about.qmd
-      - text: Blog
-        href: posts/
-      #- text: Projetos
-        #href: projects.qmd
-  page-footer:
-    left: "© 2025 Vitor Marinho"
-    right:
-      - icon: github
-        href: https://github.com/vitormarinh0
-      - icon: linkedin
-        href: https://www.linkedin.com/in/vitor-marinho-a4b742242
+        file: about.qmd
 
 format:
-  html:
-    theme: cosmo
-    css: styles.css
-    toc: true
-    include-in-header:
-      - text: |
-          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  lumo-html:
+    title: "Vitor Marinho"
+    self-contained: true
+    primary-color: "#69b3a2"
+    is-particlejs-enabled: true
+    bg-image: 
+
+extensions:
+  - holtzy/lumo

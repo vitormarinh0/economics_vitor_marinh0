@@ -1,0 +1,99 @@
+---
+title: "Perfil Setorial das Emissões de GEE na Amazônia Legal"
+description: "Evolução histórica das emissões de gases de efeito estufa por setor na Amazônia Legal de 1970 a 2020"
+date: 2025-08-06
+categories: [amazônia, emissões, mudanças climáticas, sustentabilidade]
+image: p1_gee.png
+format:
+  html:
+    page-layout: full
+    toc: true
+    toc-depth: 2
+    code-fold: true
+    code-summary: "Exibir código"
+---
+
+## A Amazônia e as emissões de GEE: uma visão setorial
+
+A Amazônia Legal tem papel central na agenda climática brasileira, tanto como **sumidouro de carbono** quanto como região com **altas taxas de emissões** associadas a desmatamento, agricultura e energia. O gráfico abaixo apresenta a evolução percentual das emissões de **Gases de Efeito Estufa (GEE)** por setor entre **1970 e 2020**.
+
+![](p1_gee.png)
+
+---
+
+### Destaques por setor
+
+A decomposição por setor mostra como a transição da matriz de emissões ocorreu ao longo das décadas:
+
+- **Anos 1970–80**: forte participação de **resíduos** e **processos industriais**, dada baixa atividade agrícola e energética na região.
+- **Anos 1990 em diante**: crescimento expressivo da **mudança de uso da terra e floresta (MUTF)**, com picos de mais de **90% das emissões totais** atribuídas ao desmatamento e degradação.
+- **Setor energético** cresce de forma constante a partir dos anos 1990, com destaque para áreas urbanas e projetos de infraestrutura.
+- **Agropecuária** mantém participação estável, mas relevante, especialmente com emissões de metano e óxido nitroso.
+
+---
+
+### Interpretação crítica
+
+A predominância da **MUTF** nas emissões da Amazônia Legal indica que a redução do desmatamento continua sendo a principal medida de mitigação disponível. Entretanto, o crescimento do setor energético impõe novos desafios:
+
+- Urbanização da região Norte
+- Pressão sobre a infraestrutura energética
+
+A diversificação das fontes de emissão exige políticas públicas multissetoriais, que articulem controle do desmatamento, regulação energética, incentivo à agropecuária de baixo carbono, e gestão adequada de resíduos.
+
+---
+
+## Código base (R)
+```{r, eval=FALSE}
+
+# --- Pacotes necessários ---
+library(ggplot2)
+library(scales)  # para formatação de eixos
+
+# --- Gráfico de barras empilhadas com anotação ---
+p1 <- ggplot(df_summarized, aes(x = ano, y = percentual, fill = nivel_1)) +
+  geom_bar(stat = "identity") +
+  
+  # Anotações dentro das barras apenas se valor >= 1%
+  geom_text(
+    aes(label = ifelse(percentual >= 1, sprintf("%.1f", percentual), "")),
+    position = position_stack(vjust = 0.5),
+    size = 2.5, color = "black"
+  ) +
+  
+  # Escala percentual no eixo y
+  scale_y_continuous(labels = percent_format(scale = 1), name = "Percentual") +
+  
+  # Títulos e legendas
+  labs(
+    title = "Percentual de Emissão por Tipo - Amazônia Legal",
+    x = "Ano",
+    y = "Percentual",
+    caption = ""
+  ) +
+  
+  # Tema com fundo branco e legenda no topo
+  theme_bw() +
+  theme(
+    legend.position = "top",
+    legend.title = element_blank(),
+    legend.text = element_text(size = 6),
+    plot.caption = element_text(hjust = 0.5)
+  ) +
+  
+  # Paleta de cores para diferenciar os setores
+  scale_fill_brewer(palette = "Dark2")
+
+# Visualizar no RStudio
+print(p1)
+
+# --- Exportação em alta resolução (4K) ---
+ggsave(
+  filename = "p1_gee.png",
+  plot = p1,
+  dpi = 300,
+  width = largura_4k / 300,         # conversão para polegadas
+  height = altura_calculada / 300  # idem
+)
+```
+

@@ -1,0 +1,83 @@
+---
+title: "Evolução do preço do m² em Belo Horizonte"
+description: "Análise da valorização nominal dos imóveis residenciais na capital mineira entre 2007 e 2023"
+date: 2025-08-06
+categories: [mercado imobiliário, políticas urbanas, Belo Horizonte]
+image: evolucao_preco_m2.png
+format:
+  html:
+    page-layout: full
+    toc: true
+    toc-depth: 2
+    code-fold: true
+    code-summary: "Exibir código"
+---
+
+## Valorização do m² em BH (2007–2023)
+
+A série histórica do preço nominal do metro quadrado de imóveis do tipo **apartamento (AP)** em **Belo Horizonte** revela uma trajetória de valorização intensa nos anos 2010, seguida por um período de estabilidade entre 2016 e 2021. A base de dados é proveniente do ITBI-BH e considera apenas imóveis com área útil acima de 11,65 m².
+
+![](evolucao_preco_m2.png)
+
+Entre os destaques:
+
+- O valor médio do m² **mais do que triplicou entre 2007 e 2014**, saltando de R$ 1.184 para R$ 3.301.
+- Entre **2016 e 2020**, o preço médio permaneceu praticamente estável em torno de R$ 3.480, sugerindo um **período de acomodação do mercado**, possivelmente influenciado pela crise econômica.
+- Após a pandemia, observa-se **um novo ciclo de crescimento nominal**, alcançando R$ 3.877 em 2023.
+
+A faixa cinza no gráfico destaca o período pandêmico (2020–2022), durante o qual o mercado se manteve estável antes de retomar sua trajetória de alta.
+
+---
+
+## Código utilizado (R)
+
+
+```{r, eval=FALSE}
+library(ggplot2)
+library(dplyr)
+library(readr)
+library(scales)
+library(ggrepel)
+
+
+# Cálculo do preço médio do m²
+df_pm2_ano <- df_imoveis_bh %>%
+  filter(area > 11.65, tipo == "AP") %>%
+  mutate(pm2 = valor_base_calculo / area) %>%
+  group_by(ano) %>%
+  summarise(preco_m2 = mean(pm2, na.rm = TRUE)) %>%
+  filter(!is.na(ano))
+
+# Gráfico
+ggplot(df_pm2_ano, aes(x = ano, y = preco_m2)) +
+  annotate("rect", xmin = 2020, xmax = 2022, ymin = -Inf, ymax = Inf,
+           alpha = 0.1, fill = "gray") +
+  geom_line(color = "#074e67", size = 1.2) +
+  geom_point(color = "#05878a", size = 2) +
+  geom_text_repel(
+    aes(label = paste0("R$ ", format(round(preco_m2), big.mark = ".", decimal.mark = ","))),
+    size = 3, fontface = "italic", direction = "y", segment.color = "grey60",
+    nudge_y = 250, box.padding = 0.2
+  ) +
+  scale_y_continuous(
+    name = "Preço do m² (R$)",
+    breaks = seq(1000, 4000, by = 500),
+    labels = label_number(big.mark = ".", decimal.mark = ",", prefix = "R$ ")
+  ) +
+  scale_x_continuous(breaks = seq(2007, 2023, by = 1)) +
+  labs(
+    title = "Preço Médio Nominal do m² em Belo Horizonte",
+    x = "Ano",
+    caption = "Fonte: ITBI-BH | Elaboração própria"
+  ) +
+  theme_minimal(base_size = 11) +
+  theme(
+    plot.title = element_text(face = "bold", size = 14),
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    panel.grid.minor = element_blank()
+  )
+
+# Exportação do gráfico
+ggsave("graficos/evolucao_preco_medio_m2.png", width = 10, height = 6, dpi = 300, bg = "white")
+```
+

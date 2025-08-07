@@ -1,0 +1,181 @@
+---
+title: "Sustentabilidade e Produto Regional: uma leitura bivariada"
+description: "Mapa bivariado cruzando o índice de sustentabilidade com o PIB per capita nas regiões imediatas brasileiras"
+date: 2025-08-06
+categories: [desenvolvimento regional, indicadores, sustentabilidade, PNDR]
+image: mapa_bivariado_comp_sust.png
+format:
+  html:
+    page-layout: full
+    toc: true
+    toc-depth: 2
+    code-fold: true
+    code-summary: "Exibir código"
+---
+
+## Indicadores da PNDR: visualizando desigualdades em múltiplas dimensões
+
+O **Painel de Indicadores da Política Nacional de Desenvolvimento Regional (PNDR)** tem como objetivo monitorar o avanço do desenvolvimento regional brasileiro, integrando diversas dimensões estratégicas e alinhado aos **Objetivos do Desenvolvimento Sustentável (ODS)**.
+
+Entre os seus eixos estão:
+
+- Educação e capacitação profissional  
+- Ciência, tecnologia e inovação  
+- Desenvolvimento produtivo  
+- Infraestrutura  
+- Desenvolvimento social  
+- Sustentabilidade  
+- Governança subnacional  
+
+Uma forma de visualizar essas dimensões é o uso de **mapas bivariados**, que permitem cruzar dois indicadores simultaneamente e identificar padrões espaciais conjuntos.
+
+---
+
+## Sustentabilidade x PIB per capita
+
+O mapa abaixo cruza duas variáveis:
+
+- O **índice de sustentabilidade regional**, que avalia aspectos ambientais, emissões e uso racional dos recursos
+- O **PIB per capita**, representando a média de renda agregada regional
+
+![](mapa_bivariado_comp_sust.png)
+
+---
+
+### Como interpretar o mapa?
+
+A paleta bivariada indica a combinação entre **baixo, médio e alto** desempenho em cada dimensão:
+
+- **Vermelho**: baixa sustentabilidade  
+- **Azul**: alto PIB per capita  
+- **Roxo escuro**: alto em ambas dimensões  
+- **Cinza claro**: baixo desempenho em ambas  
+
+Os padrões espaciais :
+
+- **Centro-Oeste e Sudeste**: PIB mais elevado, mas com baixa sustentabilidade
+- **Sul e litoral nordestino**: melhores combinações (PIB + sustentabilidade)
+- **Interior do Norte e Nordeste**: persistem em situação crítica em ambas as frentes
+
+---
+
+## Código em R
+
+```{r, eval=FALSE}
+# Carregar bibliotecas necessárias
+library(geobr)
+library(tidyverse)
+library(sf)
+library(cowplot)
+
+# Nova paleta de cores bivariadas
+bivariate_color_scale <- data.frame(
+  group = c("3 - 3", "2 - 3", "1 - 3", 
+            "3 - 2", "2 - 2", "1 - 2", 
+            "3 - 1", "2 - 1", "1 - 1"),
+  fill = c("#3F2949", "#435786", "#4885C1", 
+           "#77324C", "#806A8A", "#89A1C8", 
+           "#AE3A4E", "#BC7C8F", "#CABED0")
+)
+
+# Preparar os dados de índice de desenvolvimento
+preparar_dados <- function(indice_desenvolvimento_dimensao) {
+  indice_desenvolvimento_dimensao %>%
+    pivot_wider(
+      names_from = variavel,
+      values_from = indice_medio_dimensao
+    ) %>%
+    mutate(code_imediata = as.character(code_imediata)) %>% # Garantir consistência
+    filter(!is.na(code_imediata)) # Remover linhas inválidas
+}
+
+# Combinar dados e geometria
+combinar_dados_geometria <- function(dados, mapa_geometria) {
+  mapa_geometria %>%
+    mutate(code_immediate = as.character(code_immediate)) %>% # Garantir consistência
+    left_join(dados, by = c("code_immediate" = "code_imediata"))
+}
+
+# Função para criar mapas bivariados entre duas dimensões
+criar_mapa_bivariado_dimensoes <- function(df, dimensao_x, dimensao_y, output_dir, nome_dimensoes) {
+  # Obter os títulos das dimensões em português
+  titulo_dimensao_x <- nome_dimensoes[[dimensao_x]]
+  titulo_dimensao_y <- nome_dimensoes[[dimensao_y]]
+  
+  # Filtrar os dados e garantir que ambas dimensões sejam numéricas
+  dados_dimensoes <- df %>%
+    mutate(
+      across(all_of(c(dimensao_x, dimensao_y)), as.numeric)
+    ) %>%
+    filter(!is.na(.data[[dimensao_x]]) & !is.na(.data[[dimensao_y]])) # Remover NAs
+  
+  # Criar categorias bivariadas
+  dados_dimensoes <- dados_dimensoes %>%
+    mutate(
+      x_categoria = cut(
+        .data[[dimensao_x]],
+        breaks = quantile(.data[[dimensao_x]], probs = seq(0, 1, length.out = 4), na.rm = TRUE),
+        labels = c("1", "2", "3"),
+        include.lowest = TRUE
+      ),
+      y_categoria = cut(
+        .data[[dimensao_y]],
+        breaks = quantile(.data[[dimensao_y]], probs = seq(0, 1, length.out = 4), na.rm = TRUE),
+        labels = c("1", "2", "3"),
+        include.lowest = TRUE
+      ),
+      group = paste(y_categoria, "-", x_categoria) # Criar grupos bivariados no formato "y - x"
+    )
+  
+  # Criar o mapa bivariado com a geometria
+  mapa <- ggplot(data = dados_dimensoes) +
+    geom_sf(aes(fill = group), color = NA) +
+    scale_fill_manual(
+      values = setNames(bivariate_color_scale$fill, bivariate_color_scale$group), # Mapear cores
+      name = "Bivariado"
+    ) +
+    theme_minimal() +
+    theme(
+      legend.position = "none",
+      plot.background = element_rect(fill = "white", color = NA) # Configurar fundo branco
+    ) +
+    labs(
+      title = paste("Mapa Bivariado:", titulo_dimensao_x, "x", titulo_dimensao_y)
+    )
+  
+  # Salvar o mapa com fundo branco
+  output_path <- file.path(output_dir, paste0("mapa_bivariado_", dimensao_x, "_vs_", dimensao_y, ".png"))
+  ggsave(output_path, plot = mapa, width = 12, height = 8, dpi = 300, bg = "white")
+}
+
+# Diretório de saída para salvar os mapas
+output_dir <- "mapas_bivariados_geobr_corrigidos"
+if (!dir.exists(output_dir)) {
+  dir.create(output_dir)
+}
+
+# Preparar os dados
+dados_preparados <- preparar_dados(indice_desenvolvimento_dimensao)
+
+# Carregar o shapefile das regiões imediatas
+mapa_imediatas <- read_immediate_region(year = 2020)
+
+# Combinar os dados com a geometria
+dados_geograficos <- combinar_dados_geometria(dados_preparados, mapa_imediatas)
+
+# Lista de nomes das dimensões
+nome_dimensoes <- list(
+  "comp_citec" = "Ciência e Tecnologia",
+  "comp_desprod" = "Desenvolvimento Produtivo",
+  "comp_dessoc" = "Desenvolvimento Social",
+  "comp_educ" = "Educação e Capacitação",
+  "comp_governativas" = "Governança",
+  "comp_infra" = "Infraestrutura",
+  "comp_sust" = "Sustentabilidade"
+)
+
+# Gerar os mapas para todas as combinações de dimensões
+gerar_mapas_bivariados_todas_combinacoes(dados_geograficos, output_dir, nome_dimensoes)
+
+```
+

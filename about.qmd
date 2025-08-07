@@ -1,25 +1,17 @@
 ---
-title: "Vitor Marinho"
-image: profile.jpg
-page-layout: full
-title-block-banner: true
-title-block-banner-image: img/banner-amazonia.jpg
-about:
-  template: solana
-  links:
-    - icon: linkedin
-      text: LinkedIn
-      href: https://www.linkedin.com/in/vitor-marinho-a4b742242
-    - icon: github
-      text: GitHub
-      href: https://github.com/vitormarinh0
-    - icon: file-earmark-person
-      text: Currículo Lattes
-      href: http://lattes.cnpq.br/7205965341395241
-    - icon: filetype-pdf
-      text: CV em PDF
-      href: cv.pdf
+title: ""
+format:
+  lumo-html: 
+    logo: "img/foto_blog.jpeg"                                     # Optional. Path to a logo displayed above the title
+    github-repo: "https://github.com/vitormarinh0"        # Optional. Adds a github corner at the top right
+    primary-color: "#22543d"
+    self-contained: true
+    is-particlejs-enabled: false                          # Optional: display interactive particles in the document header
+    bg-image: ""                       
+
 ---
+
+Sou doutorando em Economia no CEDEPLAR/UFMG, onde desenvolvo pesquisas sobre vulnerabilidade climática, transição verde e impactos socioeconômicos das mudanças ambientais no Brasil.
 
 Sou economista e pesquisador com atuação nas áreas de:
 
@@ -27,7 +19,6 @@ Sou economista e pesquisador com atuação nas áreas de:
 -   Sustentabilidade e bioeconomia
 -   Modelagem econômica e espacial
 
-Atualmente, sou doutorando em Economia no CEDEPLAR/UFMG, onde desenvolvo pesquisas sobre vulnerabilidade climática, transição verde e impactos socioeconômicos das mudanças ambientais no Brasil.
 
 ------------------------------------------------------------------------
 
